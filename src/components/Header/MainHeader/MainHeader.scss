@@ -1,0 +1,41 @@
+@import "../../../consts/colors";
+
+.mainHeader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+  margin-inline: 20px;
+
+  .logoInHeader {
+    height: 80px;
+    width: 80px;
+  }
+
+  .logoInHeader:hover{
+    cursor: pointer;
+  }
+
+  .imgInHeader {
+    height: 40px;
+    width: 40px;
+  }
+
+
+  .wrapperIconsInHeader {
+    display: flex;
+    gap: inherit;
+    text-align: center;
+    align-items: flex-end;
+
+    p{
+      font-size: 14px;
+    }
+
+    .blockWrapperIconInHeader:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+

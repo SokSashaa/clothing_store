@@ -1,0 +1,20 @@
+.cartInHeader {
+  display: flex;
+  position: relative;
+  justify-content: center;
+
+  p {
+    position: absolute;
+    right: 0;
+    top: -5px;
+
+    height: 20px;
+    width: 20px;
+
+    text-align: center;
+    border-radius: 30px;
+
+    color: white;
+    background-color: red;
+  }
+}

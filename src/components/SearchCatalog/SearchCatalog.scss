@@ -1,0 +1,29 @@
+@import "../../consts/colors";
+.wrapperInputInHeader {
+  width: 660px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  border: 1px solid $mainTextColor;
+  overflow: hidden;
+
+  .imgInInput {
+    width: 30px;
+    height: 30px;
+  }
+
+  .imgInInput:hover {
+    cursor: pointer;
+  }
+
+  .inputInHeader {
+    height: 40px;
+    width: 600px;
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    outline: none;
+  }
+
+
+}
