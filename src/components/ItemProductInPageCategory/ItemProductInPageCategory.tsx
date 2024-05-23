@@ -11,10 +11,19 @@ const ItemProductInPageCategory:FC<ItemProductInPageCategoryProps> = ({itemProdu
     return (
         <div className={'wrapper_item_product_in_category'}>
             <img id={'img_product_item_category'} src={`${getSrcOnImgProduct + itemProduct.product_image}`} alt={'Лого товара'}/>
-            <div>
+            <div className={'info_product_item_category'}>
                 <p id={'article_product_item_category'}>{itemProduct.article}</p>
                 <p id={'name_product_item_category'}>{itemProduct.product_name}</p>
-                <p>{itemProduct.product_price}Р</p>
+                <div className={'prices_product'}>
+                    {
+                        itemProduct.product_discount!==0?
+                            <><p id={'discount_product_item_category'}>{itemProduct.product_price*itemProduct.product_discount}Р</p>
+                            <p id={'price_product_item_category'} className={'discount_price_product'}>{itemProduct.product_price}Р</p></>:
+                            <p id={'price_product_item_category'}>{itemProduct.product_price}Р</p>
+                    }
+                </div>
+
+                <button>Подробнее</button>
             </div>
         </div>
     )
