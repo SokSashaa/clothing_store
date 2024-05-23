@@ -16,7 +16,7 @@ const ItemProductInPageCategory:FC<ItemProductInPageCategoryProps> = ({itemProdu
                 <p id={'name_product_item_category'}>{itemProduct.product_name}</p>
                 <div className={'prices_product'}>
                     {
-                        itemProduct.product_discount!==0?
+                        itemProduct.product_discount>0?
                             <><p id={'discount_product_item_category'}>{itemProduct.product_price*itemProduct.product_discount}Р</p>
                             <p id={'price_product_item_category'} className={'discount_price_product'}>{itemProduct.product_price}Р</p></>:
                             <p id={'price_product_item_category'}>{itemProduct.product_price}Р</p>
