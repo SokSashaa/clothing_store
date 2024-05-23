@@ -6,4 +6,4 @@ export const getAllCategory = async ():Promise<categoryDTO[]> => {
     return (await axios.get('/category')).data
 }
 
-export const getSrcOnImg = 'http://localhost:3001/uploads/categories/'
+export const getSrcOnImgCategory = 'http://localhost:3001/uploads/categories/'
