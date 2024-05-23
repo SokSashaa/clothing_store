@@ -1,4 +1,4 @@
-import React, {FC, memo, useEffect, useMemo, useState} from "react";
+import React, {FC, memo, useEffect, useState} from "react";
 import ItemCategory from "../ItemCategory/ItemCategory";
 import './BlockCategories.scss'
 import {categoryDTO, initCategory} from "../../api/dto/categoryDTO";
@@ -22,6 +22,7 @@ const BlockCategories: FC<blockCategoriesProps> = memo(({isPopularCategories}) =
                     arrayCat.map((item) =>
                         <ItemCategory
                             key={item.category_id}
+                            id={item.category_id}
                             category_name={item.category_name}
                             category_img_name={item.category_img_name}/>)
                 }

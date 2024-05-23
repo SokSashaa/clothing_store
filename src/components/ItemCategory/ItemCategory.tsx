@@ -1,17 +1,22 @@
 import {FC} from "react";
 import './ItemCategory.scss'
-import {getSrcOnImg} from "../../api/category";
+import {getSrcOnImgCategory} from "../../api/category";
+import {Link} from "react-router-dom";
 
 type ItemCategoryProps = {
-    category_name:string,
-    category_img_name:string,
+    category_name: string,
+    category_img_name: string,
+    id: string,
 }
-const ItemCategory: FC<ItemCategoryProps> = ({category_name,category_img_name}) => {
+const ItemCategory: FC<ItemCategoryProps> = ({category_name, category_img_name, id}) => {
     return (
-        <div className={'wrapperItemCategory'}>
-            <h3>{category_name}</h3>
-            <img src={`${getSrcOnImg}${category_img_name}`} alt={category_name}/>
-        </div>
+        <Link to={`/categories/${id}`}>
+            <div className={'wrapperItemCategory'}>
+                <h3>{category_name}</h3>
+                <img src={`${getSrcOnImgCategory}${category_img_name}`} alt={category_name}/>
+            </div>
+        </Link>
+
     )
 }
 export default ItemCategory

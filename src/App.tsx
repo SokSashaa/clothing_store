@@ -4,6 +4,7 @@ import {Route, Routes} from "react-router-dom";
 import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AccountPage from "./pages/Account/AccountPage";
+import ProductPageInCategory from "./pages/ProductPageInCategory/ProductPageInCategory";
 
 
 function App() {
@@ -11,9 +12,8 @@ function App() {
         <div className="App">
             <Routes>
                 <Route path={'/'} element={<MainPage/>}/>
-                <Route path={'/categories'} element={<CategoriesPage/>}>
-                    <Route path={'/:id'} element={<><h1>123</h1></>}/>
-                </Route>
+                <Route path={'/categories'} element={<CategoriesPage/>}/>
+                <Route path={'/categories/:id'} element={<ProductPageInCategory/>}/>
                 <Route path={'/register'} element={<RegisterPage/>}/>
                 <Route path={'/account'} element={<AccountPage/>}/>
                 <Route path={'/favorite'} element={<></>}/>
