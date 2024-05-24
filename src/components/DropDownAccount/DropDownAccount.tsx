@@ -17,7 +17,7 @@ const DropDownAccount: FC<DropDownAccountProps> = ({children}) => {
     const logOutAccount = ()=> {
         cookies.remove('_token')
         dispatch(deleteUser())
-        // window.location.reload()
+        window.location.reload()
     }
 
     const items: MenuProps['items'] = [

@@ -16,6 +16,7 @@ const BlockItemsProductInCategory: FC = () => {
             {
                 products.map((item) =>
                     <ItemProductInPageCategory
+                        key={item.product_id}
                         itemProduct={item}/>)
             }
         </div>

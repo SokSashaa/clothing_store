@@ -14,22 +14,12 @@ import {Link, NavLink} from "react-router-dom";
 const MainHeader: FC = () => {
     const [openLogin, setOpenLogin] = useState<boolean>(false)
     const userRedux = useAppSelector(state=>state.user)
-    console.log(userRedux)
     return (
         <div className={'mainHeader'}>
            <Link to={'/'}><img className={'logoInHeader'} src={logo} alt={'Логотип'}/></Link>
             <SearchCatalog/>
 
             {userRedux.email===''? <MainModalLogIn/> : <MainDropDownAccount/>}
-
-            {/*<div className={'wrapperIconsInHeader'}>*/}
-            {/*    <div className={'blockWrapperIconInHeader'} onClick={() => setOpenLogin(true)}>*/}
-            {/*        <img className={'imgInHeader'} src={account} alt={'Аккаунт'}/>*/}
-            {/*        <p>Вход</p>*/}
-            {/*    </div>*/}
-            {/*    <ModalLogIn openLogin={openLogin} setOpenLogin={setOpenLogin}/>*/}
-            {/*    <Cart/>*/}
-            {/*</div>*/}
         </div>
     )
 }

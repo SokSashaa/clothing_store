@@ -1,16 +1,22 @@
-import React, {FC} from "react";
+import {FC, useState} from "react";
 import {Button, Checkbox, DatePicker, Form, Input, notification, Select} from "antd";
 import './RegisterForm.scss'
 import {RegisterFormDTOInForm, Roles} from "../../api/dto/auth.dto";
 import * as Api from '../../api/index'
 import {Cookies} from "react-cookie";
+import ReCAPTCHA from "react-google-recaptcha";
+import getFieldValue from "react-hook-form/dist/logic/getFieldValue";
 
 const {Option} = Select;
 
 const cookie = new Cookies();
 
 const RegisterForm: FC = () => {
+
+    const [recaptchaRef, setRecaptchaRef] = useState(true) //через useRef не работает
+
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
 
     const onSubmit = async (values: RegisterFormDTOInForm) => {
         try {
@@ -150,7 +156,20 @@ const RegisterForm: FC = () => {
                             Я согласен с правилами <a href="">agreement</a>
                         </Checkbox>
                     </Form.Item>
-
+                    <Form.Item
+                        name={'captcha'}
+                        rules={[
+                            {
+                                required:recaptchaRef,
+                                message:'Пройдите проверку на бота'
+                            }
+                        ]}
+                    >
+                        <ReCAPTCHA
+                            sitekey={'6LdkscgpAAAAAM5BxDXADMUk2mV82p6faVeJN7Ko'}
+                            onChange={()=>setRecaptchaRef(false)}
+                        />
+                    </Form.Item>
                     <Form.Item>
                         <Button type="primary" danger htmlType="submit">
                             Регистрация

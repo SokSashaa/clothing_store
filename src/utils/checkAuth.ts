@@ -2,5 +2,10 @@ import {Cookies} from "react-cookie";
 
 const cookies = new Cookies()
 export const checkAuth = () => {
-     if (!cookies.get('_token')) window.location.href = '/'
+    if (!cookies.get('_token')) window.location.href = '/'
 }
+
+export const checkTocken = (): boolean => {
+    return cookies.get('_token')
+}
+
