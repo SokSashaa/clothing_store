@@ -1,13 +1,13 @@
 import {FC, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {initialProductDTO, ProductDTO} from "../../api/dto/product.dto";
-import * as Api from "../../api";
+import {initialProductDTOArray, ProductDTO} from "../../../api/dto/product.dto";
+import * as Api from "../../../api";
 import ItemProductInPageCategory from "../ItemProductInPageCategory/ItemProductInPageCategory";
 import './BlockItemsProductsInCategory.scss'
 
 const BlockItemsProductInCategory: FC = () => {
     const {id} = useParams()
-    const [products, setProducts] = useState<ProductDTO[]>(initialProductDTO)
+    const [products, setProducts] = useState<ProductDTO[]>(initialProductDTOArray)
     useEffect(() => {
         if (id) Api.products.getAllProductsByIDCategory(id).then(setProducts)
     }, []);

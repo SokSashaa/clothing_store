@@ -1,19 +1,22 @@
 import {FC} from "react";
 import './ItemProductInPageCategory.scss'
-import {getSrcOnImgProduct} from "../../api/products";
-import {ProductDTO} from "../../api/dto/product.dto";
+import {getSrcOnImgProduct} from "../../../api/products";
+import {ProductDTO} from "../../../api/dto/product.dto";
 
 type ItemProductInPageCategoryProps = {
     itemProduct:ProductDTO
 }
 
 const ItemProductInPageCategory:FC<ItemProductInPageCategoryProps> = ({itemProduct})=>{
+    const onClickItem = ()=>{
+      window.location.href=`/product/${itemProduct.product_id}`
+    }
     return (
         <div className={'wrapper_item_product_in_category'}>
-            <img id={'img_product_item_category'} src={`${getSrcOnImgProduct + itemProduct.product_image}`} alt={'Лого товара'}/>
+            <img id={'img_product_item_category'} src={`${getSrcOnImgProduct + itemProduct.product_image}`} alt={'Лого товара'} onClick={onClickItem}/>
             <div className={'info_product_item_category'}>
                 <p id={'article_product_item_category'}>{itemProduct.article}</p>
-                <p id={'name_product_item_category'}>{itemProduct.product_name}</p>
+                <p id={'name_product_item_category'} onClick={onClickItem}>{itemProduct.product_name}</p>
                 <div className={'prices_product'}>
                     {
                         itemProduct.product_discount>0?
@@ -23,7 +26,7 @@ const ItemProductInPageCategory:FC<ItemProductInPageCategoryProps> = ({itemProdu
                     }
                 </div>
 
-                <button>Подробнее</button>
+                <button onClick={onClickItem}>Подробнее</button>
             </div>
         </div>
     )

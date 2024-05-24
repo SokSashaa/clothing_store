@@ -1,6 +1,6 @@
 import {FC} from "react";
 import Wrapper from "../../components/Wrapper/Wrapper";
-import BlockItemsProductInCategory from "../../components/BlockItemsProductsInCategory/BlockItemsProductInCategory";
+import BlockItemsProductInCategory from "../../components/Category/BlockItemsProductsInCategory/BlockItemsProductInCategory";
 import MenuProductsInCategory from "../../components/MenuProductsInCategory/MenuProductsInCategory";
 import './ProductPageInCategory.scss'
 

@@ -1,8 +1,8 @@
 import React, {FC, memo, useEffect, useState} from "react";
 import ItemCategory from "../ItemCategory/ItemCategory";
 import './BlockCategories.scss'
-import {categoryDTO, initCategory} from "../../api/dto/categoryDTO";
-import {getAllCategory} from "../../api/category";
+import {categoryDTO, initCategory} from "../../../api/dto/categoryDTO";
+import {getAllCategory} from "../../../api/category";
 
 type blockCategoriesProps = {
     isPopularCategories: boolean

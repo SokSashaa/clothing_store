@@ -1,14 +1,18 @@
 import {FC} from "react";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
+import {useAppSelector} from "../../hooks/redux";
 
 
 const RegisterPage: FC = () => {
 
+    const user = useAppSelector(state => state.user)
     return (
         <>
             <Wrapper>
-               <RegisterForm/>
+                {
+                 user.email===''? <RegisterForm/>:<h1>Вы уже зарегистрированы</h1>
+                }
             </Wrapper>
         </>
     )
