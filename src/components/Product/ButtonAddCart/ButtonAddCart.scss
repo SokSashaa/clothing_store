@@ -1,0 +1,15 @@
+.buttonAddCount{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  button{
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+  }
+  button:hover{
+    cursor: pointer;
+  }
+}
