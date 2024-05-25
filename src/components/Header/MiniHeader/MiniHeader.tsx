@@ -1,4 +1,4 @@
-import {FC, useState} from "react";
+import {FC} from "react";
 import './MiniHeader.scss'
 import {NavLink} from "react-router-dom";
 
@@ -18,21 +18,21 @@ const itemsNameInHeader: itemsHeader[] = [
 	{name: 'Партнёрам', link: '/partners'}]
 
 const MiniHeader: FC = () => {
-	const [activeItemInHeader, setActiveItemInHeader] = useState<string>(itemsNameInHeader[0].name)
 	return (
 		<div className={'miniHeader'}>
-			{
-				itemsNameInHeader.map((item, index) => {
-					return (
-						<NavLink
-							key={index}
-							onClick={() => setActiveItemInHeader(itemsNameInHeader[index].name)}
-							to={item.link}>
-							{item.name}
-						</NavLink>
-					)
-				})
-			}
+			<div className="innerLinks">
+				{
+					itemsNameInHeader.map((item, index) => {
+						return (
+								<NavLink
+									key={index}
+									to={item.link}>
+									{item.name}
+								</NavLink>
+						)
+					})
+				}
+			</div>
 		</div>
 	)
 }
