@@ -24,7 +24,6 @@ const ProductItemWrapper: FC = () => {
         dispatch(addProductInCart({item: product, count: 1}))
     }
 
-
     return (
         <div className={'product_item_wrapper'}>
             <img id={'logo_product_item'} src={`${getSrcOnImgProduct}${product.product_image}`} alt={'Лого товара'}/>
