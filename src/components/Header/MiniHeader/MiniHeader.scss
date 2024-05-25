@@ -1,25 +1,27 @@
 @import "../../../consts/colors";
 
 .miniHeader {
-  height: 30px;
-  display: flex;
-  gap: 10px;
-  font-weight: bold;
-
-  //.active_item {
-  //  color: $mainTextColorActive;
-  //}
-
-  a.active {
-    color: $mainTextColorActive;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: $mainTextColorActive;
-    cursor: pointer;
-  }
+	height: 30px;
+	display: flex;
+	gap: 15px;
+	justify-content: flex-end;
+	font-weight: bold;
+	white-space: nowrap;
+	
+	//.active_item {
+	//  color: $mainTextColorActive;
+	//}
+	
+	a.active {
+		color: $mainTextColorActive;
+	}
+	
+	a {
+		text-decoration: none;
+	}
+	
+	a:hover {
+		color: $mainTextColorActive;
+		cursor: pointer;
+	}
 }

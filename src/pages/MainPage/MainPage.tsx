@@ -4,13 +4,13 @@ import Carousel from "../../components/Carousel/Carousel";
 import BlockCategories from "../../components/Category/BlockCategories/BlockCategories";
 
 const MainPage: FC = () => {
-    return (
-        <>
-            <Wrapper>
-                <Carousel/>
-                <BlockCategories isPopularCategories/>
-            </Wrapper>
-        </>
-    )
+	return (
+		<>
+			<Wrapper>
+				<Carousel/>
+				<BlockCategories isPopularCategories/>
+			</Wrapper>
+		</>
+	)
 }
 export default MainPage
