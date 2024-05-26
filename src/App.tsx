@@ -10,6 +10,7 @@ import {checkTocken} from "./utils/checkAuth";
 import {deleteUser} from "./store/reducers/userSlice";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                 <Route path={'/categories/:id'} element={<ProductPageInCategory/>}/>
                 <Route path={'/register'} element={<RegisterPage/>}/>
                 <Route path={'/product/:id'} element={<ProductPage/>}/>
+                <Route path={'/search/:name'} element={<SearchPage/>}/>
                 <Route path={'/favorite'} element={<></>}/>
                 <Route element={<ProtectedRoute isAllow={!!user.email}/>}>
                     <Route path={'/account'} element={<AccountPage/>}/>
