@@ -5,7 +5,7 @@ import FormAccountInfo from "./FormAccountInfo/FormAccountInfo";
 import MenuInAccount from "./MenuInAccount/MenuInAccount";
 
 const AccountInfo: FC = () => {
-    const userRedux = useAppSelector(state => state.user)
+
     return (
         <div className={'wrapperAccountInfo'}>
             <MenuInAccount/>

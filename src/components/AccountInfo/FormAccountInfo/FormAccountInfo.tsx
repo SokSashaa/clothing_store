@@ -1,7 +1,9 @@
 import React, {FC} from "react";
 import {Button, Form, Input} from "antd";
+import {useAppSelector} from "../../../hooks/redux";
 
-const FormAccountInfo :FC = ()=>{
+const FormAccountInfo: FC = () => {
+    const userRedux = useAppSelector(state => state.user)
     return (
         <Form
             name="accountSetting"
