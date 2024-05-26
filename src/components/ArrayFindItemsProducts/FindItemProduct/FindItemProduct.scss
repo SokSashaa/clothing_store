@@ -1,0 +1,16 @@
+.wrapper_find_item_product{
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  background-color: #e9ecef;
+  padding: 5px;
+
+  &:hover{
+    cursor: pointer;
+    background-color: #ced4da;
+  }
+
+  #find_product_description{
+    font-size: 13px;
+  }
+}
