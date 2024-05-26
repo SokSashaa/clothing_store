@@ -7,16 +7,17 @@
   border: 1px solid $mainTextColor;
   overflow: hidden;
 
-  .imgInInput {
+  #imgInInput {
     width: 30px;
     height: 30px;
+
+    &:hover{
+      cursor: pointer;
+    }
   }
 
-  .imgInInput:hover {
-    cursor: pointer;
-  }
 
-  .inputInHeader {
+  #inputInHeader {
     height: 40px;
     width: 600px;
     padding: 10px;
