@@ -13,9 +13,10 @@ import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 
 
 function App() {
-    // const user = useAppSelector(state => state.user)
     const dispatch = useAppDispatch();
-    !checkTocken()&&dispatch(deleteUser())
+    !checkTocken() && dispatch(deleteUser())
+    const user = useAppSelector(state => state.user)
+    console.log(user)
     return (
         <div className="App">
             <Routes>
@@ -25,9 +26,9 @@ function App() {
                 <Route path={'/register'} element={<RegisterPage/>}/>
                 <Route path={'/product/:id'} element={<ProductPage/>}/>
                 <Route path={'/favorite'} element={<></>}/>
-                {/*<Route element={<ProtectedRoute isAllow={!!user}/>}>*/}
-                {/*    <Route path={'/account'} element={<AccountPage/>}/>*/}
-                {/*</Route>*/}
+                <Route element={<ProtectedRoute isAllow={!!user.email}/>}>
+                    <Route path={'/account'} element={<AccountPage/>}/>
+                </Route>
             </Routes>
         </div>
     );
