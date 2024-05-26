@@ -33,7 +33,9 @@ function App() {
                     <Route path={'/account'} element={<AccountPage/>}/>
                 </Route>
                 <Route element={<ProtectedRoute rule={'role'}/>}>
-                    <Route path={'/admin'} element={<AdminPage/>}/>
+                    <Route path={'/admin'} element={<AdminPage/>}>
+                        <Route path={'/admin/editAccess'} element={<h1>test</h1>}/>
+                    </Route>
                 </Route>
             </Routes>
         </div>
