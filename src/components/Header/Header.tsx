@@ -35,7 +35,7 @@ const Header: FC = () => {
 				+ (scrollDirection === ScrollDirections.Up && scrollOffset > 70 ? ' scrolledUp' : ' scrolledDown')}>
 			<MainHeader/>
 			{
-				scrollOffset === 0 && <MiniHeader/>
+				scrollOffset < 70 && <MiniHeader/>
 			}
 		</header>
 	)
