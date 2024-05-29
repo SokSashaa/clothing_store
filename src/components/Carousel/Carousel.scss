@@ -2,3 +2,23 @@
   padding: 30px;
   text-align: center;
 }
+
+@media (max-width: 1200px) {
+  .wrapper_carousel{
+    padding: 20px;
+    
+    img {
+      width: 600px;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .wrapper_carousel{
+    padding: 10px;
+    
+    img {
+      width: 300px;
+    }
+  }
+}

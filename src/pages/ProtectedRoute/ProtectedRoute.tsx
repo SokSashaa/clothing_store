@@ -10,6 +10,9 @@ type ProtectedRouteProps = {
 }
 const ProtectedRoute: FC<ProtectedRouteProps> = ({rule, redirectPath = '/'}) => {
     const user = useAppSelector(state => state.user)
+    if (user === undefined) {
+        return null;
+    }
     const returnIsAllow = (rule:string)=>{
         switch (rule){
             case 'user': return !!user.email
