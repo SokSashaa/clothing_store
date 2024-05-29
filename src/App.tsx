@@ -3,21 +3,21 @@ import MainPage from "./pages/MainPage/MainPage";
 import {Route, Routes} from "react-router-dom";
 import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import AccountPage from "./pages/Account/AccountPage";
 import ProductPageInCategory from "./pages/ProductPageInCategory/ProductPageInCategory";
-import {useAppDispatch, useAppSelector} from "./hooks/redux";
-import {checkTocken} from "./utils/checkAuth";
+import {useAppDispatch} from "./hooks/redux";
+import {checkToken} from "./utils/checkAuth";
 import {deleteUser} from "./store/reducers/userSlice";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import SearchPage from "./pages/SearchPage/SearchPage";
+import AdminPage from "./pages/AdminPage/AdminPage";
+import AccountPage from "./pages/Account/AccountPage";
 
 
 function App() {
     const dispatch = useAppDispatch();
-    !checkTocken() && dispatch(deleteUser())
-    const user = useAppSelector(state => state.user)
-    console.log(user)
+    !checkToken() && dispatch(deleteUser())
+
     return (
         <div className="App">
             <Routes>
@@ -28,8 +28,11 @@ function App() {
                 <Route path={'/product/:id'} element={<ProductPage/>}/>
                 <Route path={'/search/:name'} element={<SearchPage/>}/>
                 <Route path={'/favorite'} element={<></>}/>
-                <Route element={<ProtectedRoute isAllow={!!user.email}/>}>
+                <Route element={<ProtectedRoute rule={'user'}/>}>
                     <Route path={'/account'} element={<AccountPage/>}/>
+                </Route>
+                <Route element={<ProtectedRoute rule={'role'}/>}>
+                    <Route path={'/admin'} element={<AdminPage/>}/>
                 </Route>
             </Routes>
         </div>

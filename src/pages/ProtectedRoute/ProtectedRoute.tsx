@@ -1,13 +1,22 @@
 import {FC} from "react";
 import {Navigate, Outlet} from "react-router-dom";
-import {userDTO} from "../../api/dto/user.dto";
+import {useAppSelector} from "../../hooks/redux";
+import {Roles} from "../../api/dto/auth.dto";
 
 type ProtectedRouteProps = {
-    isAllow: boolean,
+    rule: string,
     redirectPath?: string,
 }
-const ProtectedRoute: FC<ProtectedRouteProps> = ({isAllow, redirectPath='/'}) => {
-    if (!isAllow) return <Navigate to={redirectPath}/>
+const ProtectedRoute: FC<ProtectedRouteProps> = ({rule, redirectPath = '/'}) => {
+    const user = useAppSelector(state => state.user)
+    const returnIsAllow = (rule:string)=>{
+        switch (rule){
+            case 'user': return !!user.email
+            case 'role': return user.role === Roles.admin
+            default: return false
+        }
+    }
+    if (!returnIsAllow(rule)) return <Navigate to={redirectPath}/>
     return <Outlet/>
 }
 export default ProtectedRoute
