@@ -1,15 +1,14 @@
 import * as React from 'react';
-import {CSSProperties, useCallback, useEffect, useMemo, useState} from 'react';
+import {CSSProperties, useCallback, useMemo, useState} from 'react';
 import cn from 'classnames';
 import {DivWithOutsideClick} from '../../../../ui-kit/DivWithOutsideClick/DivWithOutsideClick';
 
 import css from './AppraiseFilters.module.scss';
 import {ProductDTO} from '../../../../api/dto/product.dto';
-import {maxBy, minBy} from 'lodash';
+import {max, min} from 'lodash';
 import {Range} from 'react-range';
 import {useIsMounted} from '../../../../hooks/useIsMounted';
 import {BetterInput} from '../../../../ui-kit/BetterInput/BetterInput';
-import useDebounce from '../../../../hooks/useDebounce';
 import {Button} from '../../../../ui-kit/Button/Button';
 
 export type AppraiseFilterAdaptiveProps = {
@@ -24,8 +23,8 @@ export function AppraiseFilters(props: AppraiseFilterAdaptiveProps) {
 	const isMounted = useIsMounted();
 	const isDisabled = !useIsMounted();
 	
-	const minValue = minBy(props.products, 'product_price')?.product_price || 0;
-	const maxValue = maxBy(props.products, 'product_price')?.product_price || 100;
+	const minValue = min(props.products.map(item => item.product_price)) || 0;
+	const maxValue = max(props.products.map(item => item.product_price)) || 1000;
 	
 	const [fromTo, setFromTo] = useState<[number, number]>(
 		[minValue, maxValue]
