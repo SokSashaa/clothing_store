@@ -42,14 +42,12 @@ const DropDownAccount: FC<DropDownAccountProps> = ({children}) => {
                 <Link to={'/favorites'}>История заказов</Link>
             ),
         },
-        {
+        userRedux?.role === Roles.admin ? {
             key: '4',
             label: (
-                <>{userRedux.role === Roles.admin && <Link to={'/admin'}>Админка</Link>}</>
+                <Link to={'/admin'}>Админка</Link>
             ),
-
-
-        },
+        } : null,
         {
             key: '5',
             label: (
