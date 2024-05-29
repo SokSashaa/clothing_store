@@ -1,11 +1,12 @@
 import React, {FC} from "react";
 import type {MenuProps} from 'antd';
 import {Dropdown} from 'antd'
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {StarOutlined} from '@ant-design/icons'
-import {useAppDispatch} from "../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {Cookies} from "react-cookie";
 import {deleteUser} from "../../store/reducers/userSlice";
+import {Roles} from "../../api/dto/auth.dto";
 
 type DropDownAccountProps = {
     children: React.ReactNode
@@ -14,10 +15,12 @@ const cookies = new Cookies()
 
 const DropDownAccount: FC<DropDownAccountProps> = ({children}) => {
     const dispatch = useAppDispatch()
-    const logOutAccount = ()=> {
+    const userRedux = useAppSelector(state => state.user)
+    const navigate = useNavigate()
+    const logOutAccount = () => {
         cookies.remove('_token')
         dispatch(deleteUser())
-        window.location.reload()
+        navigate(0)
     }
 
     const items: MenuProps['items'] = [
@@ -39,18 +42,20 @@ const DropDownAccount: FC<DropDownAccountProps> = ({children}) => {
                 <Link to={'/favorites'}>История заказов</Link>
             ),
         },
-        // {
-        //     key: '4',
-        //     label: (
-        //         <Link to={'/favorites'}>История заказов</Link>
-        //     ),
-        // },
+        {
+            key: '4',
+            label: (
+                <>{userRedux.role === Roles.admin && <Link to={'/admin'}>Админка</Link>}</>
+            ),
+
+
+        },
         {
             key: '5',
             label: (
                 <p>Выход</p>
             ),
-            onClick:logOutAccount,
+            onClick: logOutAccount,
         },
 
     ];

@@ -36,7 +36,6 @@ const SearchCatalog: FC = () => {
             </div>
             <ArrayFindItemsProducts arrayProducts={arrayProducts}/>
         </div>
-
     )
 }
 export default SearchCatalog
