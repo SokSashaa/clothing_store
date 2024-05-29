@@ -2,6 +2,7 @@ import {FC, useState} from "react";
 import ModalLogIn from "./ModalLogIn";
 import Cart from "../Cart/Cart";
 import account from '../../images/account.svg'
+import React from "react";
 
 const MainModalLogIn:FC = ()=>{
     const [openLogin, setOpenLogin] = useState<boolean>(false)

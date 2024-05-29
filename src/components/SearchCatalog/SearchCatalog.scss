@@ -6,8 +6,11 @@
   align-items: center;
   border: 1px solid $mainTextColor;
   overflow: hidden;
+  position: relative;
 
   #imgInInput {
+    position: absolute;
+    right: 0;
     width: 30px;
     height: 30px;
 
@@ -27,4 +30,16 @@
   }
 
 
+}
+
+@media (max-width: 1200px) {
+  .wrapperInputInHeader {
+    width: 300px;
+  }
+}
+
+@media (max-width: 650px) {
+  .wrapperInputInHeader {
+    width: 125px;
+  }
 }

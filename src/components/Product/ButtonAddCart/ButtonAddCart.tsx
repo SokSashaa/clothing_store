@@ -2,6 +2,7 @@ import {FC} from "react";
 import './ButtonAddCart.scss'
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {minusCountProduct, plusCountProduct} from "../../../store/reducers/cartSlice";
+import React from "react";
 
 type ButtonAddCartProps = {
     id: string
@@ -9,6 +10,9 @@ type ButtonAddCartProps = {
 const ButtonAddCart: FC<ButtonAddCartProps> = ({id}) => {
     const cartRedux = useAppSelector(state => state.cart)
     const dispatch = useAppDispatch()
+    if (!cartRedux) {
+        return null
+    }
     const index = cartRedux.findIndex((item)=>item.item.product_id===id)
     return (
         <div className={'buttonAddCount'}>

@@ -1,0 +1,143 @@
+@import "new-constants";
+
+$layout-content-max-width: 1576px;
+$layout-outer-padding: 40px;
+$layout-max-width: $layout-content-max-width + $layout-outer-padding * 2;
+$layout-min-width: 980px;
+$layout-mobile-max-width: $layout-min-width - 1px;
+$layout-sidebar-width: 295px;
+$layout-padding: 15px;
+$layout-padding-unit: 8px;
+$layout-mobile-padding: $layout-padding-unit * 2;
+$mobile-bar-height: 48px;
+
+$white: #fff;
+$light-grey-1: #f8f8f8;
+$light-grey-2: #f3f3f3;
+$light-grey-3: #dfdfdf;
+$light-grey-4: #f0eeeb;
+$medium-grey: #b9b9b9;
+$dark-grey-1: #777;
+$dark-grey-2: #4e4e4e;
+$dark-grey-3: #2b2829;
+$black: #000;
+
+$light-red-1: #fbeaed;
+$light-red-2: #ffb8c6;
+$light-red-3: #ff7690;
+$brand-red: #f50634;
+$dark-red-1: #c41335;
+$dark-red-2: #99112b;
+$dark-red-3: #6a2230;
+
+$light-green-1: #e3fcec;
+$light-green-2: #a8eec1;
+$light-green-3: #74d99f;
+$medium-green: #38c172;
+$dark-green-1: #259d58;
+$dark-green-2: #197741;
+$dark-green-3: #145239;
+
+$light-yellow-1: #fffcf4;
+$light-yellow-2: #fdf3d7;
+$light-yellow-3: #fae29f;
+$medium-yellow: #f4ca64;
+$dark-yellow-1: #f9e7b0;
+$dark-yellow-2: #bfb28d;
+$dark-yellow-3: #5b5645;
+
+$base-font-name: FiraSans, sans-serif;
+$brand-font-name: Ubuntu, sans-serif;
+$base-font-size: 15px;
+$base-line-height: 1.31;
+$base-background-color: #fff;
+$secondary-background-color: #f3f3f3;
+$base-text-color: $new-black;
+$base-text-color-with-brand-bg: #fff;
+$base-text-color-with-dark-bg: #fff;
+$secondary-text-color: #777;
+$secondary-text-color-with-brand-bg: #fff;
+$secondary-text-color-with-dark-bg: #fff;
+$brand-color: #f50634;
+$brand-color-hover: #b50023;
+$dark-color: #2b2829;
+$dark-color-hover: #000;
+$light-color: #fff;
+$light-color-hover: #ebebeb;
+$selected-tr-color: #fcffd3;
+$table-header-background-color: #e5e5e5;
+
+$link-color: $dark-red-2;
+$link-color-hover: $brand-red;
+
+$grid-brand-width: 140px;
+$grid-number-width: 135px;
+$grid-icons-width: 71px;
+$grid-region-width: 120px;
+$grid-price-id: 108px;
+$grid-store-id: 64px;
+$grid-name-width: auto;
+$grid-count-width: 85px;
+$grid-days-width: 81px;
+$grid-price-width: 126px;
+$grid-sale-width: 24px;
+$grid-cart-width: 66px;
+$grid-percent-width: 24px;
+$grid-search-width: 90px;
+
+$input-height: 46px;
+$input-small-height: 32px;
+$input-textarea-height: 129px;
+$input-padding: 16px;
+$input-border-width: 1px;
+
+$input-bg-color: $new-white;
+$input-hover-bg-color: $new-white;
+$input-focus-bg-color: $new-white;
+$input-disabled-bg-color: $new-light-grey-2;
+$input-error-bg-color: $new-white;
+$input-success-bg-color: $new-light-grey-1;
+
+$input-border-color: $new-medium-grey;
+$input-hover-border-color: $new-medium-grey;
+$input-focus-border-color: $new-dark-grey-2;
+$input-disabled-border-color: $new-medium-grey;
+$input-error-border-color: $new-dark-red-1;
+$input-success-border-color: $new-light-grey-4;
+
+$input-color: $new-black;
+$input-hover-color: $input-color;
+$input-focus-color: $input-color;
+$input-disabled-color: $new-dark-grey-2;
+$input-error-color: $input-color;
+$input-success-color: $new-dark-grey-1;
+
+$input-placeholder-color: $new-medium-grey;
+$input-placeholder-hover-color: $input-placeholder-color;
+$input-placeholder-focus-color: $new-light-grey-4;
+$input-placeholder-disabled-color: $input-placeholder-color;
+$input-placeholder-error-color: $input-placeholder-color;
+$input-placeholder-success-color: $input-placeholder-color;
+
+$input-border-radius: 4px;
+$input-small-border-radius: 3px;
+$input-shadow: none;
+$input-font-size: 16px;
+$input-small-font-size: 14px;
+$input-message-font-size: 11px;
+$input-better-placeholder-color: $new-medium-grey;
+
+$button-min-height: 42px;
+$button-min-height-sm: 32px;
+$button-min-height-lg: 54px;
+$button-min-width: 70px;
+$button-vertical-padding: 0;
+$button-horizontal-padding: 15px;
+$button-border-style: solid;
+$button-border-width: 1px;
+$button-border-radius: 3px;
+$button-font-size: 15px;
+$button-font-size-sm: 12px;
+$button-text-transform: none;
+$button-transition-fn: ease-out;
+$button-transition-time: 150ms;

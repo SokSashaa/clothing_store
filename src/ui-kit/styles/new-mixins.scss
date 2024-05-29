@@ -1,0 +1,6 @@
+@import "generated/shadows-mixins";
+@import "generated/typography-mixins";
+
+@mixin money() {
+	word-spacing: 0.25em * 0.6 - 0.25em;
+}

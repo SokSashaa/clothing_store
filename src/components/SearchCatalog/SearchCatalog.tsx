@@ -6,6 +6,7 @@ import * as Api from '../../api'
 import ArrayFindItemsProducts from "../ArrayFindItemsProducts/ArrayFindItemsProducts";
 import {ProductDTO} from "../../api/dto/product.dto";
 import {useNavigate} from "react-router-dom";
+import React from "react";
 
 const SearchCatalog: FC = () => {
     const [valueInput, setValueInput] = useState<string>('');

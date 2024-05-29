@@ -1,0 +1,71 @@
+@import "../../../ui-kit/styles/new-mixins.scss";
+@import "../../../ui-kit/styles/new-constants.scss";
+
+.block_items_products_in_category{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 15px;
+}
+
+.titleAndSwitcher {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 20px;
+}
+.allItems {
+  //width: 100%;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  color: $new-black;
+  margin-bottom: 0;
+}
+
+.titleBrand {
+  @include heading-1();
+  
+  text-transform: uppercase;
+}
+
+.titleArticle {
+  color: $new-medium-grey;
+}
+
+.titleName {
+  @include body-medium-large();
+}
+
+.recommendedSlider {
+  margin-bottom: 60px !important;
+}
+
+@media (max-width: 1200px) {
+  .block_items_products_in_category{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .titleBrand {
+    @include heading-3();
+  }
+}
+@media (max-width: 630px) {
+  .block_items_products_in_category{
+    grid-template-columns: repeat(1, 1fr);
+    padding: 5px;
+  }
+  
+  .titleBrand {
+    @include heading-5();
+  }
+}

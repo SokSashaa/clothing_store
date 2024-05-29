@@ -11,6 +11,7 @@ import {Link} from "react-router-dom";
 const MainHeader: FC = () => {
 	const [openLogin, setOpenLogin] = useState<boolean>(false)
 	const userRedux = useAppSelector(state => state.user)
+	if (!userRedux) return null;
 	return (
 		<div className={'mainHeader'}>
 			<Link to={'/'}><img className={'logoInHeader'} src={logo} alt={'Логотип'}/></Link>

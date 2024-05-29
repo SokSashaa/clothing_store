@@ -1,0 +1,65 @@
+.wrapper {
+	position: relative;
+}
+
+.shrinked {
+	overflow: hidden;
+
+	.lines-1 & {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.lines-2 & {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+	}
+
+	.lines-3 & {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+	}
+
+	.lines-4 & {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 4;
+	}
+
+	.lines-5 & {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 5;
+	}
+
+	.lines-6 & {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 6;
+	}
+
+	> span {
+		display: inline;
+	}
+}
+
+.full {
+	position: absolute;
+	padding: 10px;
+	background: #fff;
+	box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	white-space: normal;
+	top: -10px;
+	left: -10px;
+	width: 100%;
+	box-sizing: content-box;
+	z-index: 1;
+
+	.directionTop & {
+		top: auto;
+		bottom: -10px;
+	}
+}

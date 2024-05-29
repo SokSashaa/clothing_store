@@ -7,6 +7,7 @@ import {initialProductDTO, ProductDTO} from "../../../api/dto/product.dto";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {addProductInCart} from "../../../store/reducers/cartSlice";
 import ButtonAddCart from "../ButtonAddCart/ButtonAddCart";
+import React from "react";
 
 
 const ProductItemWrapper: FC = () => {
@@ -17,7 +18,7 @@ const ProductItemWrapper: FC = () => {
     }, []);
 
     const cart = useAppSelector(state => state.cart)
-    const index = cart.findIndex((item) => item.item.product_id === product.product_id)
+    const index = cart?.findIndex((item) => item.item.product_id === product.product_id)
     const dispatch = useAppDispatch();
 
     const onClick_addInCart = () => {

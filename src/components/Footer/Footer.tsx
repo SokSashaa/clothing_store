@@ -2,6 +2,7 @@ import {FC} from "react";
 import './Footer.scss'
 import {routesMap} from '../../utils/routesMap';
 import {NavLink} from 'react-router-dom';
+import React from "react";
 
 type itemsFooter = {
     name: React.ReactNode,

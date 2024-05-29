@@ -1,0 +1,26 @@
+@import "constants";
+
+body {
+	font-family: $base-font-name, Arial, Helvetica, sans-serif;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+	color: $base-text-color;
+	background-color: $base-background-color;
+	overflow-y: scroll;
+	overflow-anchor: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+*:focus {
+	outline: none;
+}
+
+*:active {
+	outline: none;
+}
+
+a:focus:focus-visible,
+button:focus-visible {
+	outline: 1px solid $new-black;
+}

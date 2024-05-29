@@ -1,0 +1,71 @@
+@font-face {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 500;
+	src:
+		url('../fonts/hinted-subset-Ubuntu-Medium.woff2') format('woff2'),
+		url('../fonts/hinted-subset-Ubuntu-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 700;
+	src:
+		url('../fonts/hinted-subset-Ubuntu-Bold.woff2') format('woff2'),
+		url('../fonts/hinted-subset-Ubuntu-Bold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'FiraSans';
+	font-style: normal;
+	font-weight: 400;
+	src:
+		url('../fonts/hinted-subset-FiraSans-Regular.woff2') format('woff2'),
+		url('../fonts/hinted-subset-FiraSans-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'FiraSans';
+	font-style: normal;
+	font-weight: 500;
+	src:
+		url('../fonts/hinted-subset-FiraSans-Medium.woff2') format('woff2'),
+		url('../fonts/hinted-subset-FiraSans-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'FiraSans';
+	font-style: normal;
+	font-weight: 600;
+	src:
+		url('../fonts/hinted-subset-FiraSans-SemiBold.woff2') format('woff2'),
+		url('../fonts/hinted-subset-FiraSans-SemiBold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'FiraSans';
+	font-style: italic;
+	font-weight: 400;
+	src:
+		url('../fonts/hinted-subset-FiraSans-Italic.woff2') format('woff2'),
+		url('../fonts/hinted-subset-FiraSans-Italic.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'FiraSans';
+	font-style: italic;
+	font-weight: 500;
+	src:
+		url('../fonts/hinted-subset-FiraSans-MediumItalic.woff2') format('woff2'),
+		url('../fonts/hinted-subset-FiraSans-MediumItalic.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'FiraSans';
+	font-style: italic;
+	font-weight: 600;
+	src:
+		url('../fonts/hinted-subset-FiraSans-SemiBoldItalic.woff2') format('woff2'),
+		url('../fonts/hinted-subset-FiraSans-SemiBoldItalic.woff') format('woff');
+}

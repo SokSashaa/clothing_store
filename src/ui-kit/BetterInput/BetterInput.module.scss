@@ -1,0 +1,204 @@
+@import "../styles/constants.scss";
+
+.root {
+	display: inline-block;
+	position: relative;
+	height: $input-height;
+}
+
+.rootSmall {
+	height: $input-small-height;
+}
+
+.textareaRoot {
+	height: $input-textarea-height;
+}
+
+.input {
+	composes: input from '../Input/Input.module.scss';
+	width: 100%;
+	height: 100%;
+
+	.hasBetterPlaceholder & {
+		padding-top: $input-height * 0.2;
+
+		&.textarea {
+			padding-top: 20px;
+		}
+
+		&::placeholder {
+			color: rgba(158, 158, 158, 0);
+			transition: color 200ms;
+		}
+
+		&:focus::placeholder {
+			color: rgba(158, 158, 158, 1);
+		}
+	}
+}
+
+.select {
+	composes: select from '../Input/Input.module.scss';
+}
+
+.small {
+	composes: small from '../Input/Input.module.scss';
+}
+
+.error {
+	composes: error from '../Input/Input.module.scss';
+}
+
+.disableIcons {
+	composes: disableIcons from '../Input/Input.module.scss';
+}
+
+.success {
+	composes: success from '../Input/Input.module.scss';
+}
+
+.disabled {
+	composes: disabled from '../Input/Input.module.scss';
+}
+
+.textarea {
+	composes: textarea from '../Input/Input.module.scss';
+}
+
+.fullWidth {
+	display: block;
+}
+
+.input.betterPlaceholder {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	outline: none;
+	border-color: rgba(0, 0, 0, 0);
+	background-color: transparent;
+	pointer-events: none;
+	resize: none;
+}
+
+.betterPlaceholderInner {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	top: 0;
+	bottom: 0;
+	white-space: nowrap;
+	transform-origin: left;
+	transition: transform 200ms;
+
+	.hasValue &,
+	.input:focus ~ .betterPlaceholder & {
+		transform: translate3d(0, -30%, 0) scale3d(0.8, 0.8, 1);
+	}
+
+	.textareaRoot & {
+		padding-top: $input-height * 0.304;
+		align-items: flex-start;
+		transform-origin: top left;
+		white-space: normal;
+	}
+
+	.hasValue.textareaRoot &,
+	.textareaRoot .input:focus ~ .betterPlaceholder & {
+		transform: translate3d(0, -8px, 0) scale3d(0.8, 0.8, 1);
+	}
+}
+
+.betterPlaceholderMainText {
+	color: $input-placeholder-color;
+
+	.hasValue &,
+	.input:focus ~ .betterPlaceholder & {
+		display: none;
+	}
+}
+
+.betterPlaceholderTopText {
+	display: none;
+	color: $input-better-placeholder-color;
+
+	.hasValue &,
+	.input:focus ~ .betterPlaceholder & {
+		display: inline;
+	}
+}
+
+.errorMessage {
+	position: absolute;
+	right: 0;
+	top: 100%;
+	margin-top: -8px;
+	padding: 4px 8px;
+	border-radius: 7px;
+	background-color: $new-light-red-3;
+	font-size: $input-message-font-size;
+	line-height: 12px;
+	text-align: right;
+	color: $new-white;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+	&::before {
+		content: '';
+		position: absolute;
+		right: 12px;
+		bottom: 100%;
+		width: 10px;
+		height: 5px;
+		border-width: 0 5px 5px;
+		border-color: transparent transparent $new-light-red-3;
+		border-style: solid;
+	}
+
+	a {
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+.successMessage {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	font-size: $input-message-font-size;
+	line-height: 12px;
+	text-align: right;
+	color: $dark-green-2;
+}
+
+.infoMessage {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	font-size: $input-message-font-size;
+	text-align: right;
+	color: $dark-grey-1;
+}
+
+.clearButton {
+	position: absolute;
+	top: 0;
+	right: 6px;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	border: none;
+	background-color: transparent;
+	fill: $new-dark-grey-1;
+
+	:focus-within & {
+		fill: $new-dark-grey-2;
+	}
+
+	.error ~ & {
+		fill: $input-error-border-color;
+	}
+}

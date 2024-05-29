@@ -1,0 +1,198 @@
+@import '../constants';
+
+// Body/Add Extrasmall
+@mixin body-add-extrasmall() {
+	font-family: $base-font-name;
+	font-weight: 400;
+	font-size: 10px;
+	letter-spacing: inherit;
+	line-height: 126%;
+}
+// Body/Additional
+@mixin body-additional() {
+	font-family: $base-font-name;
+	font-weight: 600;
+	font-size: 15px;
+	letter-spacing: inherit;
+	line-height: 140%;
+}
+// Body/Caption medium
+@mixin body-caption-medium() {
+	font-family: $base-font-name;
+	font-weight: 400;
+	font-size: 12px;
+	letter-spacing: inherit;
+	line-height: 130%;
+}
+// Body/Large
+@mixin body-large() {
+	font-family: $base-font-name;
+	font-weight: 400;
+	font-size: 24px;
+	letter-spacing: 0.24px;
+	line-height: 150%;
+}
+// Body/Medium
+@mixin body-medium() {
+	font-family: $base-font-name;
+	font-weight: 400;
+	font-size: 16px;
+	letter-spacing: inherit;
+	line-height: 150%;
+}
+// Body/medium-large
+@mixin body-medium-large() {
+	font-family: $base-font-name;
+	font-weight: 400;
+	font-size: 19px;
+	letter-spacing: inherit;
+	line-height: 180%;
+}
+// Body/Small
+@mixin body-small() {
+	font-family: $base-font-name;
+	font-weight: 400;
+	font-size: 14px;
+	letter-spacing: inherit;
+	line-height: 150%;
+}
+// Body/XSmall
+@mixin body-x-small() {
+	font-family: $base-font-name;
+	font-weight: 400;
+	font-size: 12px;
+	letter-spacing: inherit;
+	line-height: 150%;
+}
+// Body/XS compact
+@mixin body-xs-compact() {
+	font-family: $base-font-name;
+	font-weight: 400;
+	font-size: 12px;
+	letter-spacing: inherit;
+	line-height: 126%;
+}
+
+// Button / Large
+@mixin button-large() {
+	font-family: $base-font-name;
+	font-weight: 600;
+	font-size: 18px;
+	letter-spacing: 0.18px;
+	line-height: 140%;
+}
+// Button / Medium
+@mixin button-medium() {
+	font-family: $base-font-name;
+	font-weight: 500;
+	font-size: 16px;
+	letter-spacing: 0.18px;
+	line-height: 140%;
+}
+// Button / Small
+@mixin button-small() {
+	font-family: $base-font-name;
+	font-weight: 400;
+	font-size: 16px;
+	letter-spacing: 0.16px;
+	line-height: 126%;
+}
+
+// Caption
+@mixin caption() {
+	font-family: $base-font-name;
+	font-weight: 500;
+	font-size: 12px;
+	letter-spacing: inherit;
+	line-height: 130%;
+}
+// Display / L
+// Disp L true
+@mixin display-l() {
+	font-family: $brand-font-name;
+	font-weight: 700;
+	font-size: 96px;
+	letter-spacing: 1.92px;
+	line-height: 110%;
+}
+// Display/M
+@mixin display-m() {
+	font-family: $brand-font-name;
+	font-weight: 700;
+	font-size: 72px;
+	letter-spacing: 2.16px;
+	line-height: 110%;
+}
+// Display/S
+@mixin display-s() {
+	font-family: $brand-font-name;
+	font-weight: 700;
+	font-size: 56px;
+	letter-spacing: 1.68px;
+	line-height: 110%;
+}
+// Display/XS
+@mixin display-xs() {
+	font-family: $brand-font-name;
+	font-weight: 700;
+	font-size: 44px;
+	letter-spacing: 1.3199999999999998px;
+	line-height: 110%;
+}
+
+// Heading/1
+@mixin heading-1() {
+	font-family: $brand-font-name;
+	font-weight: 700;
+	font-size: 34px;
+	letter-spacing: -0.68px;
+	line-height: 120%;
+}
+// Heading/2
+@mixin heading-2() {
+	font-family: $brand-font-name;
+	font-weight: 500;
+	font-size: 32px;
+	letter-spacing: -0.64px;
+	line-height: 120%;
+}
+// Heading/3
+@mixin heading-3() {
+	font-family: $base-font-name;
+	font-weight: 600;
+	font-size: 24px;
+	letter-spacing: inherit;
+	line-height: 130%;
+}
+// Heading/4
+@mixin heading-4() {
+	font-family: $base-font-name;
+	font-weight: 600;
+	font-size: 20px;
+	letter-spacing: inherit;
+	line-height: 130%;
+}
+// Heading/5
+@mixin heading-5() {
+	font-family: $base-font-name;
+	font-weight: 600;
+	font-size: 18px;
+	letter-spacing: inherit;
+	line-height: 140%;
+}
+// Heading/6
+@mixin heading-6() {
+	font-family: $base-font-name;
+	font-weight: 500;
+	font-size: 16px;
+	letter-spacing: inherit;
+	line-height: 140%;
+}
+// Heading/7
+@mixin heading-7() {
+	font-family: $base-font-name;
+	font-weight: 500;
+	font-size: 14px;
+	letter-spacing: inherit;
+	line-height: 140%;
+}

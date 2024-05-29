@@ -2,6 +2,7 @@ import {FC} from "react";
 import DropDownAccount from "./DropDownAccount";
 import account from "../../images/account.svg";
 import Cart from "../Cart/Cart";
+import React from "react";
 
 const MainDropDownAccount:FC = ()=>{
     return (

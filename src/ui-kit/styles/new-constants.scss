@@ -1,0 +1,26 @@
+@import "generated/colors";
+
+$new-dark-green-3: #145239;
+$new-dark-green-2: #197741;
+$new-dark-green-1: #259d58;
+$new-medium-green: #38c172;
+$new-light-green-3: #74d99f;
+$new-light-green-2: #a8eec1;
+$new-light-green-1: #e3fcec;
+
+$new-orange: #FA602F;
+$v3-light-blue-4: #50AAFE;
+
+$new-layout-max-width: 1660px;
+$new-layout-min-width: 960px;
+$new-default-transition-time-in-ms: 150;
+$new-default-transition-time: $new-default-transition-time-in-ms * 1ms;
+$new-mobile-header-height: 60px;
+
+$new-link-color: $new-brand-red;
+$new-link-color-hover: $new-dark-red-1;
+$new-link-color-active: $new-brand-red;
+
+$new-button-radius: 6px;
+$new-small-button-radius: 4px;
+$new-large-button-radius: 10px;

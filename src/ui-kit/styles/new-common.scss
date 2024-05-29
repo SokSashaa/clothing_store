@@ -1,0 +1,58 @@
+@import "new-constants";
+@import "constants";
+
+.unstyledButton {
+	text-align: inherit;
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	appearance: none;
+}
+
+.fullScreen {
+	margin-left: -$layout-outer-padding;
+	margin-right: -$layout-outer-padding;
+	width: calc(100% + #{$layout-outer-padding * 2});
+
+	[data-is-mobile] & {
+		margin-left: -$layout-mobile-padding;
+		margin-right: -$layout-mobile-padding;
+		width: calc(100% + #{$layout-mobile-padding * 2});
+	}
+}
+
+[data-is-mobile] .mobileFullscreen {
+	margin-left: -$layout-mobile-padding;
+	margin-right: -$layout-mobile-padding;
+	width: calc(100% + #{$layout-mobile-padding * 2});
+}
+
+.link {
+	color: $new-link-color;
+	cursor: pointer;
+
+	&:hover {
+		color: $new-link-color-hover;
+		text-decoration: underline;
+	}
+
+	&:active {
+		color: $new-link-color-active;
+	}
+}
+
+.dashedLink {
+	composes: link;
+	background-image: linear-gradient(to right, currentColor, currentColor 50%, transparent 50%);
+	background-size: 4px 1px;
+	background-repeat: repeat-x;
+	background-position: 1px 100%;
+
+	&:hover {
+		text-decoration: none;
+		background-image: none;
+	}
+}

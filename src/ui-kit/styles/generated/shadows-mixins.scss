@@ -1,0 +1,22 @@
+// Shadow / type 1
+@mixin shadow-type-1() {
+	box-shadow: 0 2px 4px rgba(48, 51, 67, 0.1);
+}
+// Shadow / type 2
+@mixin shadow-type-2() {
+	box-shadow: 0 5px 15px rgba(48, 51, 67, 0.08);
+}
+// Shadow / type 3
+@mixin shadow-type-3() {
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+// Shadow / type 4
+@mixin shadow-type-4() {
+	box-shadow: 0 24px 70px rgba(0, 0, 0, 0.13);
+}
+
+// Shadow / type 5
+@mixin shadow-type-5() {
+	box-shadow: 0 24px 54px 0 rgba(0, 0, 0, 0.15);
+}
+

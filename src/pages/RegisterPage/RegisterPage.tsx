@@ -2,6 +2,7 @@ import {FC} from "react";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import {useAppSelector} from "../../hooks/redux";
+import React from "react";
 
 
 const RegisterPage: FC = () => {
@@ -11,7 +12,7 @@ const RegisterPage: FC = () => {
         <>
             <Wrapper>
                 {
-                 user.email===''? <RegisterForm/>:<h1>Вы уже зарегистрированы</h1>
+                    user?.email===''? <RegisterForm/>:<h1>Вы уже зарегистрированы</h1>
                 }
             </Wrapper>
         </>

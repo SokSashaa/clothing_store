@@ -2,6 +2,7 @@ import {FC} from "react";
 import './ArrayFindItemsProducts.scss'
 import {ProductDTO} from "../../api/dto/product.dto";
 import FindItemProduct from "./FindItemProduct/FindItemProduct";
+import React from "react";
 
 type arrayFindItemsProductsProps = {
     arrayProducts: ProductDTO[]

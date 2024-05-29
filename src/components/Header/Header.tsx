@@ -2,6 +2,7 @@ import {FC, useCallback, useEffect, useState} from "react";
 import './Header.scss'
 import MiniHeader from "./MiniHeader/MiniHeader";
 import MainHeader from "./MainHeader/MainHeader";
+import React from "react";
 
 enum ScrollDirections {
 	Up,

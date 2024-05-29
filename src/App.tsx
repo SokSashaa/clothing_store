@@ -12,14 +12,14 @@ import ProductPage from "./pages/ProductPage/ProductPage";
 import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import SearchPage from "./pages/SearchPage/SearchPage";
 
+import './index.scss'
+
 
 function App() {
     const dispatch = useAppDispatch();
     !checkTocken() && dispatch(deleteUser())
-    const user = useAppSelector(state => state.user)
-    console.log(user)
     return (
-        <div className="App">
+        <div className="App" id={'app-root'}>
             <Routes>
                 <Route path={'/'} element={<MainPage/>}/>
                 <Route path={'/categories'} element={<CategoriesPage/>}/>
@@ -28,9 +28,9 @@ function App() {
                 <Route path={'/product/:id'} element={<ProductPage/>}/>
                 <Route path={'/search/:name'} element={<SearchPage/>}/>
                 <Route path={'/favorite'} element={<></>}/>
-                <Route element={<ProtectedRoute isAllow={!!user.email}/>}>
-                    <Route path={'/account'} element={<AccountPage/>}/>
-                </Route>
+                {/*<Route element={<ProtectedRoute isAllow={!!user.email}/>}>*/}
+                {/*    <Route path={'/account'} element={<AccountPage/>}/>*/}
+                {/*</Route>*/}
             </Routes>
         </div>
     );

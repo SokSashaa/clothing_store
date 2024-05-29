@@ -4,6 +4,7 @@ import sl2 from './images/sl2.jpeg'
 import AliceCarousel from "react-alice-carousel";
 import './Carousel.scss'
 import {ControlsStrategy} from "react-alice-carousel/lib/types";
+import React from 'react';
 
 const Carousel = () => {
 

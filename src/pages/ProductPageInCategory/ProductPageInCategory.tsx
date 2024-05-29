@@ -3,16 +3,13 @@ import Wrapper from "../../components/Wrapper/Wrapper";
 import BlockItemsProductInCategory from "../../components/Category/BlockItemsProductsInCategory/BlockItemsProductInCategory";
 import MenuProductsInCategory from "../../components/MenuProductsInCategory/MenuProductsInCategory";
 import './ProductPageInCategory.scss'
+import React from "react";
 
 const ProductPageInCategory: FC = () => {
 
     return (
         <Wrapper>
-            <div className={'wrapper_product_page_category'}>
-                <MenuProductsInCategory/>
                 <BlockItemsProductInCategory/>
-            </div>
-
         </Wrapper>
     )
 }

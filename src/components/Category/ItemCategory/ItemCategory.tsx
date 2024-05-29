@@ -2,6 +2,7 @@ import {FC} from "react";
 import './ItemCategory.scss'
 import {getSrcOnImgCategory} from "../../../api/category";
 import {Link} from "react-router-dom";
+import React from "react";
 
 type ItemCategoryProps = {
     category_name: string,

@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import Wrapper from "../../components/Wrapper/Wrapper";
-import Carousel from "../../components/Carousel/Carousel";
+import Carousel from '../../components/Carousel/Carousel';
 import BlockCategories from "../../components/Category/BlockCategories/BlockCategories";
 
 const MainPage: FC = () => {

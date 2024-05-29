@@ -1,0 +1,156 @@
+@import "../styles/constants.scss";
+
+.input {
+	display: inline-block;
+	height: $input-height;
+	padding-left: $input-padding;
+	padding-right: $input-padding;
+	border: $input-border-width solid $input-border-color;
+	border-radius: $input-border-radius;
+	background-color: $input-bg-color;
+	box-shadow: $input-shadow;
+	font-size: $input-font-size;
+	font-family: inherit;
+	line-height: normal;
+	color: $input-color;
+	outline: none;
+
+	&::placeholder {
+		opacity: 1;
+		color: $input-placeholder-color;
+	}
+
+	&:hover {
+		border-color: $input-hover-border-color;
+		background-color: $input-hover-bg-color;
+		color: $input-hover-color;
+
+		&::placeholder {
+			color: $input-placeholder-hover-color;
+		}
+	}
+
+	&:focus {
+		border-color: $input-focus-border-color;
+		background-color: $input-focus-bg-color;
+		color: $input-focus-color;
+
+		&::placeholder {
+			color: $input-placeholder-focus-color;
+		}
+	}
+}
+
+.small {
+	border-radius: $input-small-border-radius;
+	height: $input-small-height;
+	font-size: $input-small-font-size;
+}
+
+.disableIcons {
+	background-image: none !important;
+}
+
+.error {
+	&:not(.disableIcons) {
+		padding-right: 34px;
+		background-image: url('./error.svg');
+		background-repeat: no-repeat;
+		background-position: top 50% right 12px;
+	}
+
+	&,
+	&:hover,
+	&:focus {
+		border-color: $input-error-border-color;
+		background-color: $input-error-bg-color;
+		color: $input-error-color;
+
+		&::placeholder {
+			color: $input-placeholder-error-color;
+		}
+	}
+}
+
+.success {
+	&:not(.disableIcons) {
+		padding-right: 34px;
+		background-image: url('./success.svg');
+		background-repeat: no-repeat;
+		background-position: top 50% right 9px;
+	}
+
+	&,
+	&:hover,
+	&:focus {
+		border-color: $input-success-border-color;
+		background-color: $input-success-bg-color;
+		color: $input-success-color;
+
+		&::placeholder {
+			color: $input-placeholder-success-color;
+		}
+	}
+}
+
+.disabled {
+	&,
+	&:hover,
+	&:focus {
+		border-color: $input-disabled-border-color;
+		background-color: $input-disabled-bg-color;
+		color: $input-disabled-color;
+
+		&::placeholder {
+			color: $input-placeholder-disabled-color;
+		}
+
+		cursor: default;
+	}
+}
+
+.select {
+	padding-right: 35px;
+	background-image: url('./arrow.svg');
+	background-position: right 11px top 50%;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	appearance: none;
+
+	&::-ms-expand {
+		display: none;
+	}
+
+	&:focus {
+		background-image: url('./arrow-darken.svg');
+	}
+
+	&.small {
+		padding-right: 27px;
+		background-position: right 7px top 50%;
+	}
+	
+	option {
+		color: $input-color !important;
+		
+		&[disabled] {
+			color: $input-placeholder-color !important;
+		}
+	}
+}
+
+.selectPlaceholder {
+	color: $input-placeholder-color;
+	
+	&:hover {
+		color: $input-placeholder-hover-color;
+	}
+}
+
+.textarea {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	height: $input-textarea-height;
+	resize: none;
+	overflow: auto;
+}

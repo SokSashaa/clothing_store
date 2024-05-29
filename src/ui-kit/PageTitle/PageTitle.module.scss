@@ -1,0 +1,17 @@
+@import "../styles/constants.scss";
+@import "../styles/new-mixins.scss";
+
+.root {
+	margin-bottom: 15px;
+
+	@include heading-3();
+
+	@media (min-width: $layout-min-width) {
+		@include heading-1();
+	}
+}
+
+.thin {
+	font-weight: 300;
+	font-size: 30px;
+}
