@@ -11,7 +11,7 @@ const items: MenuItem[] = [
     {
         key: 'sub1',
         label: 'Navigation One',
-        icon: <MailOutlined />,
+        // icon: <MailOutlined />,
         children: [
             {
                 key: 'g1',
@@ -36,7 +36,7 @@ const items: MenuItem[] = [
     {
         key: 'sub2',
         label: 'Navigation Two',
-        icon: <AppstoreOutlined />,
+        // icon: <AppstoreOutlined />,
         children: [
             { key: '5', label: 'Option 5' },
             { key: '6', label: 'Option 6' },
@@ -56,7 +56,7 @@ const items: MenuItem[] = [
     {
         key: 'sub4',
         label: 'Navigation Three',
-        icon: <SettingOutlined />,
+        // icon: <SettingOutlined />,
         children: [
             { key: '9', label: 'Option 9' },
             { key: '10', label: 'Option 10' },

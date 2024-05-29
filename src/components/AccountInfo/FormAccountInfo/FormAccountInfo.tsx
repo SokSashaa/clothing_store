@@ -12,8 +12,10 @@ const FormAccountInfo: FC = () => {
             wrapperCol={{
                 span: 30
             }}
-            // onFinish={(values: any) => onSubmit(values)}
-        >
+            initialValues={{
+                ...userRedux
+            }}
+                    >
             <Form.Item
                 label={'E-mail'}
                 name={'email'}

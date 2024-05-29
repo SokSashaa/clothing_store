@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, {FC} from "react";
 import './MainHeader.scss'
 import logo from '../../../images/logo.svg'
 import SearchCatalog from "../../SearchCatalog/SearchCatalog";
@@ -9,7 +9,6 @@ import {Link} from "react-router-dom";
 
 
 const MainHeader: FC = () => {
-	const [openLogin, setOpenLogin] = useState<boolean>(false)
 	const userRedux = useAppSelector(state => state.user)
 	return (
 		<div className={'mainHeader'}>
