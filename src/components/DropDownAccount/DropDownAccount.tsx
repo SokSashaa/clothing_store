@@ -48,8 +48,14 @@ const DropDownAccount: FC<DropDownAccountProps> = ({children}) => {
                 <Link to={'/admin'}>Админка</Link>
             ),
         } : null,
-        {
+        userRedux?.role === Roles.producer ? {
             key: '5',
+            label: (
+                <Link to={'/myCompany'}>Моя компания</Link>
+            )
+        } : null,
+        {
+            key: '6',
             label: (
                 <p>Выход</p>
             ),

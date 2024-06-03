@@ -22,7 +22,9 @@ function App() {
         <div className="App">
             <Routes>
                 <Route path={'/'} element={<MainPage/>}/>
-                <Route path={'/categories'} element={<CategoriesPage/>}/>
+                <Route path={'categories'} element={<CategoriesPage/>}>
+
+                </Route>
                 <Route path={'/categories/:id'} element={<ProductPageInCategory/>}/>
                 <Route path={'/register'} element={<RegisterPage/>}/>
                 <Route path={'/account'} element={<AccountPage/>}/>
@@ -32,10 +34,13 @@ function App() {
                 <Route element={<ProtectedRoute rule={'user'}/>}>
                     <Route path={'/account'} element={<AccountPage/>}/>
                 </Route>
-                <Route element={<ProtectedRoute rule={'role'}/>}>
-                    <Route path={'/admin'} element={<AdminPage/>}>
-                        <Route path={'/admin/editAccess'} element={<h1>test</h1>}/>
+                <Route element={<ProtectedRoute rule={'roleAdmin'}/>}>
+                    <Route path={'admin'} element={<AdminPage/>}>
+                        <Route path={'editAccess'} element={<h1>test</h1>}/>
                     </Route>
+                </Route>
+                <Route element={<ProtectedRoute rule={'roleProducer'}/>}>
+                    <Route path={'/myCompany'} element={<></>}></Route>
                 </Route>
             </Routes>
         </div>

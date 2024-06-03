@@ -16,7 +16,8 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({rule, redirectPath = '/'}) => 
     const returnIsAllow = (rule:string)=>{
         switch (rule){
             case 'user': return !!user.email
-            case 'role': return user.role === Roles.admin
+            case 'roleAdmin': return user.role === Roles.admin
+            case 'roleProducer': return user.role === Roles.producer
             default: return false
         }
     }
