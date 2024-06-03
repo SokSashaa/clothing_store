@@ -64,7 +64,6 @@ const DropDownAccount: FC<DropDownAccountProps> = ({children}) => {
 
     ];
 
-
     return (
         <>
             <Dropdown menu={{items}}>
