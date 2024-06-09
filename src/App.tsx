@@ -12,6 +12,7 @@ import ProtectedRoute from "./pages/ProtectedRoute/ProtectedRoute";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import AccountPage from "./pages/Account/AccountPage";
+import AdminEditUser from "./components/Admin/AdminEditUser/AdminEditUser";
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
                 </Route>
                 <Route element={<ProtectedRoute rule={'roleAdmin'}/>}>
                     <Route path={'admin'} element={<AdminPage/>}>
-                        <Route path={'editAccess'} element={<h1>test</h1>}/>
+                        <Route path={'editUser'} element={<AdminEditUser/>}/>
                     </Route>
                 </Route>
                 <Route element={<ProtectedRoute rule={'roleProducer'}/>}>

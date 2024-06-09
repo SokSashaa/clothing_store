@@ -1,7 +1,7 @@
 import React, {FC, memo, useEffect, useState} from "react";
 import ItemCategory from "../ItemCategory/ItemCategory";
 import './BlockCategories.scss'
-import {categoryDTO, initCategory} from "../../../api/dto/categoryDTO";
+import {categoryDto, initCategory} from "../../../api/dto/category.dto";
 import {getAllCategory} from "../../../api/category";
 
 type blockCategoriesProps = {
@@ -9,7 +9,7 @@ type blockCategoriesProps = {
 }
 
 const BlockCategories: FC<blockCategoriesProps> = memo(({isPopularCategories}) => {
-    const [arrayCat, setArrayCar] = useState<categoryDTO[]>(initCategory)
+    const [arrayCat, setArrayCar] = useState<categoryDto[]>(initCategory)
     useEffect(() => {
         getAllCategory().then(setArrayCar)
     }, []);

@@ -6,8 +6,6 @@ axios.defaults.baseURL = 'http://localhost:3001'
 axios.interceptors.request.use((config:any) => {
     if (typeof window !== "undefined") {
         const _token =  cookies.get('_token')
-        //const _token = cookies().get('_token')
-        // const { _token } = parseCookies();
 
         if(_token) config.headers.Authorization = "Bearer " + _token;
     }

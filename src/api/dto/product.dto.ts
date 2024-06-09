@@ -6,6 +6,8 @@ export type ProductDTO = {
     product_image: string,
     product_price:number,
     product_discount:number
+    category_id: string,
+    company_id: string
 }
 
 export const initialProductDTOArray: ProductDTO[] = [{
@@ -15,7 +17,9 @@ export const initialProductDTOArray: ProductDTO[] = [{
     product_image: "",
     product_name: "",
     product_discount:0,
-    product_price:0
+    product_price:0,
+    category_id:"",
+    company_id:""
 },]
 
 
@@ -27,5 +31,7 @@ export const initialProductDTO: ProductDTO = {
     product_image: "",
     product_name: "",
     product_discount:0,
-    product_price:0
+    product_price:0,
+    category_id:"",
+    company_id:""
 }

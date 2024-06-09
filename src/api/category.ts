@@ -1,8 +1,8 @@
 import axios from "../utils/axios";
 // import axios from "axios";
-import {categoryDTO} from "./dto/categoryDTO";
+import {categoryDto} from "./dto/category.dto";
 
-export const getAllCategory = async ():Promise<categoryDTO[]> => {
+export const getAllCategory = async ():Promise<categoryDto[]> => {
     return (await axios.get('/category')).data
 }
 

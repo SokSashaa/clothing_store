@@ -8,7 +8,6 @@ import axios from "../../utils/axios";
 
 
 const AdminPage:FC = ()=>{
-    axios.get('/user/getAllUsers').then((values) => console.log(values))
     return (
         <Wrapper>
             <MenuInAdminPage/>

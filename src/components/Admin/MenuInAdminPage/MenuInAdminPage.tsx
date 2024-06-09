@@ -7,8 +7,8 @@ const MenuInAdminPage:FC = ()=>{
 
     const items: MenuItem[] = [
         {
-            key: 'editAccess',
-            label: (<Link to={'/admin/editAccess'}>Редактирование прав пользователя</Link>)
+            key: 'editUser',
+            label: (<Link to={'/admin/editUser'}>Редактирование пользователей</Link>)
         },
     ];
     return (

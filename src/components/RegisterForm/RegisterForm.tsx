@@ -91,7 +91,7 @@ const RegisterForm: FC = () => {
                                name="date_birthday"
                                label="Дата рождения"
                                rules={[{type: 'object' as const, required: true, message: 'Please select time!'}]}>
-                        <DatePicker/>
+                        <DatePicker format={'DD-MM-YYYY'}/>
                     </Form.Item>
                     <Form.Item label="E-Mail"
                                name="email"

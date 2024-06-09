@@ -3,6 +3,7 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {Roles} from "../../api/dto/auth.dto";
 
 const initialState: userDTO = {
+    id: "",
     date_birthday: new Date(),
     date_reg: new Date(),
     email: "",
@@ -16,6 +17,7 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         addUser(state, action: PayloadAction<userDTO>) {
+            state.id = action.payload.id
             state.email = action.payload.email
             state.firstname = action.payload.firstname
             state.lastname = action.payload.lastname
@@ -31,9 +33,10 @@ export const userSlice = createSlice({
             state.firstname = ""
             state.lastname = ""
             state.role = Roles.default
+            state.id = ""
             // state = initialState
         }
     }
 })
-export const {addUser,deleteUser} = userSlice.actions
+export const {addUser, deleteUser} = userSlice.actions
 export default userSlice.reducer

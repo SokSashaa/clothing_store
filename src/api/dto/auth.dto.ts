@@ -1,14 +1,17 @@
+import {userDTO} from "./user.dto";
+
 export type LoginFormDto = {
     email: string,
     password: string
 }
 
 export type TokenResponseDTO = {
-    user:RegisterFormDTO,
+    user:userDTO,
     token: string
 }
 
 export type RegisterFormDTO = LoginFormDto & {
+    id?:string,
     email:string,
     firstname:string,
     lastname:string,
