@@ -10,6 +10,10 @@ const MenuInAdminPage:FC = ()=>{
             key: 'editUser',
             label: (<Link to={'/admin/editUser'}>Редактирование пользователей</Link>)
         },
+        {
+            key:'company',
+            label: (<Link to={'/admin/company'}>Меню компаний</Link>)
+        }
     ];
     return (
         <Menu  mode="horizontal" items={items} />

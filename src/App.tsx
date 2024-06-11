@@ -13,6 +13,7 @@ import SearchPage from "./pages/SearchPage/SearchPage";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import AccountPage from "./pages/Account/AccountPage";
 import AdminEditUser from "./components/Admin/AdminEditUser/AdminEditUser";
+import EditCompany from "./components/Admin/EditCompany/EditCompany";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
                 <Route element={<ProtectedRoute rule={'roleAdmin'}/>}>
                     <Route path={'admin'} element={<AdminPage/>}>
                         <Route path={'editUser'} element={<AdminEditUser/>}/>
+                        <Route path={'company'} element={<EditCompany/>}/>
                     </Route>
                 </Route>
                 <Route element={<ProtectedRoute rule={'roleProducer'}/>}>
@@ -47,5 +49,4 @@ function App() {
         </div>
     );
 }
-
 export default App;

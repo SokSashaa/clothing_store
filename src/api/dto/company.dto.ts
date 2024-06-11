@@ -1,5 +1,5 @@
 export type companyDto = {
-    id:string,
+    id?:string,
     name:string,
     inn:string,
     ogrn:string,
