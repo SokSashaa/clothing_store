@@ -30,7 +30,6 @@ function App() {
                 </Route>
                 <Route path={'/categories/:id'} element={<ProductPageInCategory/>}/>
                 <Route path={'/register'} element={<RegisterPage/>}/>
-                <Route path={'/account'} element={<AccountPage/>}/>
                 <Route path={'/product/:id'} element={<ProductPage/>}/>
                 <Route path={'/search/:name'} element={<SearchPage/>}/>
                 <Route path={'/favorite'} element={<></>}/>

@@ -1,17 +1,18 @@
 import {FC} from "react";
 import Wrapper from "../../components/Wrapper/Wrapper";
-import {Menu, MenuProps} from "antd";
 import React from "react";
 import MenuInAdminPage from "../../components/Admin/MenuInAdminPage/MenuInAdminPage";
 import {Outlet} from "react-router-dom";
-import axios from "../../utils/axios";
+import css from './AdminPage.module.scss'
 
 
 const AdminPage:FC = ()=>{
     return (
         <Wrapper>
-            <MenuInAdminPage/>
-            <Outlet/>
+            <div className={css.root}>
+                <MenuInAdminPage/>
+                <Outlet/>
+            </div>
         </Wrapper>
     )
 }

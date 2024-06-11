@@ -1,0 +1,19 @@
+$heightEdit: 300px;
+.root {
+  min-height: $heightEdit;
+  display: flex;
+  margin: 20px;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.buttonAdd{
+  width: 150px;
+  height: 40px;
+}
