@@ -17,8 +17,6 @@ const SelectCompany: FC<SelectCompanyProps> = memo(({placeholder, value, onChang
     const [dataCompany, setDataCompany] = useState<SelectProps['options']>([]);
     const [arrayCompanies, setArrayCompanies] = useState<getCompanyDADATA[]>([])
 
-    console.log('select inn', value)
-
     const searchItemCompany = (inn: string): getCompanyDADATA => {
         const result = arrayCompanies.find(item => item.inn === inn)
         if (result) return result
@@ -30,7 +28,7 @@ const SelectCompany: FC<SelectCompanyProps> = memo(({placeholder, value, onChang
             clearTimeout(timeout);
             timeout = null;
         }
-        if (newValue) {
+        if (newValue && newValue.length>=5 && newValue.match(/^[0-9]+$/)) {
             timeout = setTimeout(async () => {
                 getCompaniesDADATA(newValue)
                     .then(value => {
@@ -41,13 +39,6 @@ const SelectCompany: FC<SelectCompanyProps> = memo(({placeholder, value, onChang
                         }))
                         setDataCompany(data)
                     })
-                // Api.userApi.findUserByEmail(newValue).then((value) => {
-                //     const data = value.map(item => ({
-                //         value: item.id,
-                //         text: item.email
-                //     }))
-                //     setDataCompany(data)
-                // })
             }, 1000);
 
         } else {

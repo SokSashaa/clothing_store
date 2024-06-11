@@ -13,6 +13,10 @@ const MenuInAdminPage:FC = ()=>{
         {
             key:'company',
             label: (<Link to={'/admin/company'}>Меню компаний</Link>)
+        },
+        {
+            key:'category',
+            label: (<Link to={'/admin/editCategory'}>Категории</Link>)
         }
     ];
     return (
