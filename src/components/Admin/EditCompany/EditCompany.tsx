@@ -19,7 +19,7 @@ const EditCompany: FC = () => {
         onCancel={closeModal}
         destroyOnClose
       >
-        <CreateCompanyForm />
+        <CreateCompanyForm closeModal={closeModal} />
       </Modal>
     </div>
   );

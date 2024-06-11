@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Button, Form, Input, Row } from "antd";
+import { Button, Form, Input, notification, Row } from "antd";
 import { companyDto } from "../../api/dto/company.dto";
 import SelectUsers from "../../ui-kit/SelectUsers/SelectUsers";
 import {
@@ -8,7 +8,10 @@ import {
 } from "../../api/dadata/getCompanies";
 import SelectCompany from "../../ui-kit/SelectCompany/SelectCompany";
 
-const CreateCompanyForm: FC = () => {
+type CreateCompanyFormProps = {
+  closeModal: () => void;
+};
+const CreateCompanyForm: FC<CreateCompanyFormProps> = (props) => {
   const [form] = Form.useForm();
   const [valueINN, setValueINN] = useState("123");
   const [valueUser, setValueUser] = useState("");
@@ -16,11 +19,8 @@ const CreateCompanyForm: FC = () => {
     initialStateCompanyDADATA,
   );
 
-  console.log("modal inn", valueINN);
-  console.log("modalstart company", dataCompany);
   useEffect(() => {
     form.resetFields();
-    console.log("reset comp", dataCompany);
   }, [dataCompany, form]);
 
   const onSubmitForm = (data: companyDto) => {
@@ -36,10 +36,17 @@ const CreateCompanyForm: FC = () => {
     //     message: error.response.data.message,
     //     duration: 2
     // }))
+    try {
+      notification.success({ message: "Добавление успешно выполнено" });
+      props.closeModal();
+    } catch {
+      notification.error({ message: "Произошла ошибка" });
+    }
   };
 
   const onCancel = () => {
     setDataCompany(initialStateCompanyDADATA);
+    props.closeModal();
   };
 
   return (
@@ -80,11 +87,10 @@ const CreateCompanyForm: FC = () => {
         </Form.Item>
       </div>
       <Row>
-        <Button onClick={onCancel}>Отмена</Button>,
+        <Button onClick={onCancel}>Отмена</Button>
         <Button type="primary" htmlType={"submit"} onClick={form.submit}>
           Создать
         </Button>
-        ,
       </Row>
     </Form>
   );
