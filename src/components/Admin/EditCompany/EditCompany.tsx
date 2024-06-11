@@ -1,15 +1,27 @@
-import React, {FC, useState} from "react";
-import {Button} from "antd";
-import css from './EditCompany.module.scss'
-import ModalCreateCompany from "../../ModalCreateCompany/ModalCreateCompany";
+import React, { FC } from "react";
+import { Button, Modal } from "antd";
+import css from "./EditCompany.module.scss";
+import CreateCompanyForm from "../../ModalCreateCompany/CreateCompanyForm";
+import { useModalState } from "../../../hooks/useModalState";
 
 const EditCompany: FC = () => {
-    const [openModalCreate,setOpenModalCreate] = useState(false)
-    return (
-        <div className={css.root}>
-            <Button type={"primary"} className={css.buttonAdd} onClick={()=>setOpenModalCreate(true)}>Создать</Button>
-            <ModalCreateCompany isOpenModal={openModalCreate} setOpen={setOpenModalCreate}/>
-        </div>
-    )
-}
-export default EditCompany
+  const [isModalOpen, openModal, closeModal] = useModalState(false);
+
+  return (
+    <div className={css.root}>
+      <Button type={"primary"} className={css.buttonAdd} onClick={openModal}>
+        Создать
+      </Button>
+
+      <Modal
+        open={isModalOpen}
+        title="Создание компании"
+        onCancel={closeModal}
+        destroyOnClose
+      >
+        <CreateCompanyForm />
+      </Modal>
+    </div>
+  );
+};
+export default EditCompany;
