@@ -1,0 +1,11 @@
+.root{
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
