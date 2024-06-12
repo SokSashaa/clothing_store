@@ -12,7 +12,7 @@ const MenuInProducerPage:FC = ()=>{
         },
     ];
     return (
-        <Menu  mode="horizontal" items={items}  defaultValue={'crud'}/>
+        <Menu  mode="horizontal" items={items}/>
     )
 }
 export default MenuInProducerPage
