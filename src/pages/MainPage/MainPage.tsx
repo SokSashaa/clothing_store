@@ -1,16 +1,13 @@
-import React, {FC} from "react";
-import Wrapper from "../../components/Wrapper/Wrapper";
+import React, {FC} from 'react';
 import Carousel from '../../components/Carousel/Carousel';
-import BlockCategories from "../../components/Category/BlockCategories/BlockCategories";
+import BlockCategories from '../../components/Category/BlockCategories/BlockCategories';
 
 const MainPage: FC = () => {
 	return (
 		<>
-			<Wrapper>
-				<Carousel/>
-				<BlockCategories isPopularCategories/>
-			</Wrapper>
+			<Carousel />
+			<BlockCategories isPopularCategories />
 		</>
-	)
-}
-export default MainPage
+	);
+};
+export default MainPage;

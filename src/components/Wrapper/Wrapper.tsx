@@ -1,17 +1,19 @@
-import React, {FC} from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import React, {FC} from 'react';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+
+import css from './Wrapper.module.scss';
 
 type propsWrapper = {
-    children: React.ReactNode,
-}
+	children: React.ReactNode;
+};
 const Wrapper: FC<propsWrapper> = ({children}) => {
-    return (
-        <>
-            <Header/>
-            {children}
-            <Footer/>
-        </>
-    )
-}
-export default Wrapper
+	return (
+		<div className={css.master}>
+			<Header />
+			{children}
+			<Footer />
+		</div>
+	);
+};
+export default Wrapper;
