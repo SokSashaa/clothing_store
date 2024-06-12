@@ -15,6 +15,8 @@ import AccountPage from "./pages/Account/AccountPage";
 import AdminEditUser from "./components/Admin/AdminEditUser/AdminEditUser";
 import EditCompany from "./components/Admin/EditCompany/EditCompany";
 import EditCategory from "./components/Admin/EditCategory/EditCategory";
+import ProducerPage from "./pages/ProducerPage/ProducerPage";
+import ProductsProducer from "./components/Producer/ProductsProducer";
 
 
 function App() {
@@ -44,7 +46,9 @@ function App() {
                     </Route>
                 </Route>
                 <Route element={<ProtectedRoute rule={'roleProducer'}/>}>
-                    <Route path={'/myCompany'} element={<></>}></Route>
+                    <Route path={'myCompany'} element={<ProducerPage/>}>
+                        <Route path={'products'} element={<ProductsProducer/>}/>
+                    </Route>
                 </Route>
             </Routes>
         </div>

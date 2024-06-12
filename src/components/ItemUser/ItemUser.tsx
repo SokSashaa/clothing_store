@@ -14,13 +14,20 @@ type ItemUserProps = {
 const ItemUser: FC<ItemUserProps> = ({user}) => {
     const [openModalUpdate, setOpenModalUpdate] = useState(false)
     const deleteUser = () => {
-        Api.userApi.deleteUser(user.id).catch(() => {
-            notification.error({
-                message: 'Ошибка!',
-                description: 'Ошибка при удалении',
-                duration: 2
+        Api.userApi.deleteUser(user.id)
+            .then(() => {
+                notification.success({
+                    message: 'Успешно!',
+                    duration: 2
+                })
             })
-        })
+            .catch((error) => {
+                notification.error({
+                    message: 'Ошибка!',
+                    description: error.response.data.message,
+                    duration: 2
+                })
+            })
     }
 
     const showModelDelete = ModalDanger('Удалить пользователя?',
