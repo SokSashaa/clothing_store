@@ -53,29 +53,29 @@
 }
 
 .styleTypeSecondary {
-	border-color: $new-brand-red;
+	border-color: $new-light-blue-4;
 	background-color: $new-white;
-	color: $new-brand-red;
+	color: $new-light-blue-4;
 	box-shadow: none;
 
 	&:not(.disabled):hover {
-		border-color: $new-dark-red;
-		color: $new-dark-red;
-		background-color: $new-light-red-1;
+		border-color: $new-dark-blue-1;
+		color: $new-dark-blue-1;
+		background-color: $new-light-blue-1;
 		box-shadow: none;
 	}
 
 
 	&:not(.disabled):focus-visible {
-		border-color: $new-dark-red-1;
-		color: $new-dark-red-1;
-		background-color: $new-light-red-2;
+		border-color: $new-dark-blue-2;
+		color: $new-dark-blue-2;
+		background-color: $new-light-blue-2;
 	}
 
 	&:not(.disabled):active {
-		border-color: $new-dark-red-2;
-		color: $new-dark-red-2;
-		background-color: $new-light-red-3;
+		border-color: $new-dark-blue-3;
+		color: $new-dark-blue-3;
+		background-color: $new-light-blue-4;
 		box-shadow: none;
 	}
 }
