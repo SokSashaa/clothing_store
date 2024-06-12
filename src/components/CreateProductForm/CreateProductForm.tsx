@@ -17,6 +17,7 @@ const CreateProductForm: FC<CreateCompanyFormProps> = (props) => {
     const user = useAppSelector(state => state.user)
 
     const onSubmitForm = (data: any) => {
+
         if(user){
             Api.products.createProduct(data,user)
                 .then(() => {
@@ -56,11 +57,11 @@ const CreateProductForm: FC<CreateCompanyFormProps> = (props) => {
             <Form.Item name={"product_description"} label={"Описание"} required>
                 <TextArea placeholder={"Описание"}/>
             </Form.Item>
-            <Form.Item name={"product_price"} label={"Цена"} required>
-                <InputNumber placeholder={'Цена'} min={0}/>
+            <Form.Item name={"product_price"} label={"Цена"} required >
+                <InputNumber placeholder={'Цена'} min={0} defaultValue={0.0}/>
             </Form.Item>
             <Form.Item name={"product_discount"} label={"Скидка (0-1)"}>
-                <InputNumber placeholder={'Скидка'} step={0.1} max={1} min={0} defaultValue={0}/>
+                <InputNumber placeholder={'Скидка'} step={0.1} max={1} min={0} defaultValue={0.0}/>
             </Form.Item>
             <Form.Item name={"category_id"} label={"Категория"} required>
                 <SelectCategory value={valueCategory} onChange={setValueCategory} placeholder={'Категория'}/>

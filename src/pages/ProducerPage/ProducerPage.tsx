@@ -6,8 +6,11 @@ import MenuInProducerPage from "../../components/MenuInProducerPage/MenuInProduc
 const ProducerPage: FC = () => {
     return (
         <Wrapper>
-            <MenuInProducerPage/>
-            <Outlet/>
+            <div style={{minHeight:'300px'}}>
+                <MenuInProducerPage/>
+                <Outlet/>
+            </div>
+
         </Wrapper>
     )
 }
