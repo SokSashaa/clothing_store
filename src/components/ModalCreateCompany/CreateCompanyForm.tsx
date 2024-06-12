@@ -50,7 +50,7 @@ const CreateCompanyForm: FC<CreateCompanyFormProps> = (props) => {
             layout={"vertical"}
         >
             <div>
-                <Form.Item name={"inn"} label={"ИНН (мин.5 символов)"}>
+                <Form.Item name={"inn"} label={"ИНН (мин.5 символов)"} required>
                     {/*<Input placeholder={'ИНН'}/>*/}
                     <SelectCompany
                         placeholder={"ИНН"}
@@ -59,18 +59,18 @@ const CreateCompanyForm: FC<CreateCompanyFormProps> = (props) => {
                         onChangeCompanyState={setDataCompany}
                     />
                 </Form.Item>
-                <Form.Item name={"name"} label={"Название"}>
+                <Form.Item name={"name"} label={"Название"} required>
                     <Input placeholder={"Название"}/>
                 </Form.Item>
-                <Form.Item name={"ogrn"} label={"ОГРН"}>
+                <Form.Item name={"ogrn"} label={"ОГРН"} required>
                     <Input placeholder={"ОГРН "}/>
                 </Form.Item>
             </div>
             <div>
-                <Form.Item name={"address"} label={"Адрес"}>
+                <Form.Item name={"address"} label={"Адрес"} required>
                     <Input placeholder={"Адрес "}/>
                 </Form.Item>
-                <Form.Item name={"user_id"} label={"Пользователь"}>
+                <Form.Item name={"user_id"} label={"Пользователь"} required>
                     <SelectUsers
                         value={valueUser}
                         onChange={setValueUser}

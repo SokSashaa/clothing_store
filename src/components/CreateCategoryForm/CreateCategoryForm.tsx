@@ -40,7 +40,7 @@ const CreateCategoryForm: FC<CreateCompanyFormProps> = (props) => {
             onFinish={(values) => onSubmitForm(values)}
             layout={"vertical"}
         >
-            <Form.Item name={"category_name"} label={"Название"}>
+            <Form.Item name={"category_name"} label={"Название"} required>
                 <Input placeholder={"Название"}/>
             </Form.Item>
 
