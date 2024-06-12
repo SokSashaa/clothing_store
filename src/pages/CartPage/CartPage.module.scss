@@ -1,0 +1,198 @@
+
+@import '../../ui-kit/styles/constants';
+@import "../../ui-kit/styles/new-mixins.scss";
+
+.title {
+	@include heading-1
+}
+
+.main {
+	padding: 30px;
+}
+
+.wrapper {
+	display: flex;
+	gap: 50px;
+	align-items: center;
+	
+	.table {
+		max-width: 70%;
+	}
+	
+	.sumBlock {
+		padding: 20px;
+		border-radius: 15px;
+		border: 1px solid $new-medium-grey;
+		width: 35%;
+		background: $new-white;
+		display: flex;
+		gap: 30px;
+		flex-direction: column;
+		
+		.top {
+			p {
+				display: flex;
+				align-items: baseline;
+				color: $new-black;
+				
+				
+				.firstText {
+					order: 0;
+				}
+				
+				&:before {
+					content: '';
+					border-bottom: 1px dashed $new-light-grey-3;
+					flex-grow: 1;
+					order: 1;
+					width: 1px;
+				}
+				
+				.secondText {
+					order: 2;
+				}
+			}
+			
+			.countItems {
+				@include heading-3();
+			}
+			.countPieces {
+				@include heading-5();
+				color: $new-medium-grey
+			}
+		}
+		
+		.bottom {
+			background-color: $new-light-grey-3;
+			margin: -20px;
+			padding: 20px;
+			border-bottom-left-radius: 15px;
+			border-bottom-right-radius: 15px;
+			border-top: 1px solid $new-medium-grey;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			
+			.finalPrice {
+				color: $new-black;
+				display: flex;
+				align-items: baseline;
+				
+				&:before {
+					content: '';
+					border-bottom: 1px dashed $new-medium-grey;
+					flex-grow: 1;
+					order: 1;
+					width: 1px;
+				}
+				
+				@include heading-3();
+				.priceText {
+					order: 0;
+				}
+				.priceNumber {
+					position: relative;
+					order: 2;
+				}
+			}
+			
+			.button {
+				width: 75%;
+				align-self: center;
+			}
+		}
+	}
+}
+
+.photoImg {
+	object-fit: contain;
+	width: 100%;
+	height: 200px;
+}
+
+.numberOfItems {
+	@include heading-3
+}
+
+.priceWrap {
+	height: 26px;
+	margin-bottom: 8px;
+	display: flex;
+	align-items: center;
+}
+
+.price {
+	@include heading-5();
+	color: $new-black;
+	line-height: 26px;
+}
+
+.oldPrice {
+	@include heading-6();
+	
+	color: $new-medium-grey;
+	margin-left: 10px;
+	position: relative;
+	
+	&::after {
+		content: "";
+		position: absolute;
+		top: calc(50% - 1px);
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background-color: white;
+		border-top: 1px solid $new-medium-grey;
+	}
+}
+
+
+.nameWrap {
+	max-width: 100%;
+	word-break: break-all;
+	margin-bottom: 6px;
+	line-height: 23px;
+}
+
+.name {
+	color: $new-black;
+}
+
+@media (max-width: 1080px) {
+	.title {
+		@include heading-4();
+	}
+	
+	.photoImg {
+		object-fit: contain;
+		width: 100%;
+		height: 100px;
+	}
+	
+	.wrapper {
+		flex-direction: column;
+		.table {
+			width: 100%;
+			max-width: unset;
+		}
+		.sumBlock {
+			width: 100%;
+			
+			.top {
+				.countItems {
+					@include heading-5();
+				}
+				.countPieces {
+					@include heading-7();
+				}
+			}
+			
+			.bottom {
+				.finalPrice {
+					@include heading-5();
+					
+				}
+			}
+		}
+	}
+}

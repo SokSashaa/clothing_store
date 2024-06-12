@@ -7,9 +7,9 @@
 	box-sizing: border-box;
 	min-height: 46px;
 	padding: 11px 16px;
-	border: 1px solid $new-brand-red;
+	border: 1px solid $new-dark-blue-1;
 	border-radius: $new-button-radius;
-	background-color: $new-brand-red;
+	background-color: $new-dark-blue-1;
 	font-style: normal;
 	color: #fff;
 	text-decoration: none;
@@ -22,19 +22,19 @@
 
 
 	&:not(.disabled):hover {
-		border-color: $new-dark-red;
-		background-color: $new-dark-red;
+		border-color: $new-dark-blue-2;
+		background-color: $new-dark-blue-2;
 	}
 
 	&:not(.disabled):focus-visible {
 		outline: none;
-		border-color: $new-dark-red-1;
-		background-color: $new-dark-red-1;
+		border-color: $new-dark-blue-3;
+		background-color: $new-dark-blue-3;
 	}
 
 	&:not(.disabled):active {
-		background: $new-dark-red-2;
-		border-color: $new-dark-red-2;
+		background: $new-dark-blue-4;
+		border-color: $new-dark-blue-4;
 	}
 
 	&.disabled {

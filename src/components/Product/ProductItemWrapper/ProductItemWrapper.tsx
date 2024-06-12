@@ -6,7 +6,6 @@ import {useParams} from 'react-router-dom';
 import {initialProductDTO, ProductDTO} from '../../../api/dto/product.dto';
 import {useAppDispatch, useAppSelector} from '../../../hooks/redux';
 import {addProductInCart, minusCountProduct, plusCountProduct} from '../../../store/reducers/cartSlice';
-import ButtonAddCart from '../ButtonAddCart/ButtonAddCart';
 import React from 'react';
 import {ImageViewer} from '../../../ui-kit/ImageViewer/ImageViewer';
 import {formatPrice} from '../../../utils/formatPrice';
