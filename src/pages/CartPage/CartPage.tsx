@@ -143,10 +143,14 @@ export const CartPage = () => {
 							dispatch(plusCountProduct(record.item.product_id));
 							setSelectedItems(
 								selectedItems?.map((item) => {
+									let count = item.count;
 									if (item.item.product_id === record.item.product_id) {
-										item.count = item.count + 1;
+										count = item.count + 1;
 									}
-									return item;
+									return {
+										item: item.item,
+										count: count,
+									};
 								})
 							);
 						}}
