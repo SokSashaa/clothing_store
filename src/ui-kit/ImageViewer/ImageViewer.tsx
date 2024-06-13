@@ -79,14 +79,16 @@ export const ImageViewer: FC<ImageViewerProps> = ({images}) => {
 								)
 						)}
 					</div>
-					<div className={css.arrowsBlock}>
-						<span className={css.arrow} onClick={handleSwitchToPrevImage}>
-							<LeftOutlined />
-						</span>
-						<span className={css.arrow} onClick={handleSwitchToNextImage}>
-							<RightOutlined />
-						</span>
-					</div>
+					{images.length > 1 && (
+						<div className={css.arrowsBlock}>
+							<span className={css.arrow} onClick={handleSwitchToPrevImage}>
+								<LeftOutlined />
+							</span>
+							<span className={css.arrow} onClick={handleSwitchToNextImage}>
+								<RightOutlined />
+							</span>
+						</div>
+					)}
 				</div>
 			)}
 		</div>
