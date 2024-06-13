@@ -40,6 +40,7 @@ const ProductsProducer: FC = () => {
 			title: 'Артикул',
 			dataIndex: 'article',
 			key: 'article',
+			render: (_, record) => <Link to={`/product/${record.product_id}`}>{record.article}</Link>,
 		},
 		{
 			title: 'Name',
