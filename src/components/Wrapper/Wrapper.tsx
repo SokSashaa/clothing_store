@@ -10,8 +10,10 @@ type propsWrapper = {
 const Wrapper: FC<propsWrapper> = ({children}) => {
 	return (
 		<div className={css.master}>
-			<Header />
-			{children}
+			<main>
+				<Header />
+				{children}
+			</main>
 			<Footer />
 		</div>
 	);

@@ -20,7 +20,11 @@ const BlockItemsProductInCategory: FC = () => {
 				setProducts(value);
 				setInitialProducts(value);
 			});
-		if (name) Api.products.findAllProductByPartName(name).then(setProducts);
+		if (name)
+			Api.products.findAllProductByPartName(name).then((value) => {
+				setProducts(value);
+				setInitialProducts(value);
+			});
 	}, [id, name]);
 
 	const handleApplyFilter = useCallback(
