@@ -107,15 +107,30 @@ export const CartPage = () => {
 						size={'small'}
 						styleType={'secondary'}
 						onClick={() => {
-							dispatch(minusCountProduct(record.item.product_id));
-							setSelectedItems(
-								selectedItems?.map((item) => {
-									if (item.item.product_id === record.item.product_id) {
-										item.count = item.count - 1;
-									}
-									return item;
-								})
-							);
+							const currentCount = selectedItems?.filter(
+								(item) => item.item.product_id === record.item.product_id
+							)[0].count;
+							if (currentCount === undefined) return;
+							if (currentCount > 1) {
+								dispatch(minusCountProduct(record.item.product_id));
+								setSelectedItems(
+									selectedItems?.map((item) => {
+										let count = item.count;
+										if (item.item.product_id === record.item.product_id) {
+											count = currentCount - 1;
+										}
+										return {
+											item: item.item,
+											count: count,
+										};
+									})
+								);
+							} else {
+								dispatch(removeProductFromCart(record.item.product_id));
+								setSelectedItems(
+									selectedItems?.filter((item) => item.item.product_id !== record.item.product_id)
+								);
+							}
 						}}
 					>
 						<MinusOutlined />
