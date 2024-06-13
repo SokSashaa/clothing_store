@@ -12,13 +12,13 @@ const SearchCatalog: FC = () => {
 	const [valueInput, setValueInput] = useState<string>('');
 	const [arrayProducts, setArrayProducts] = useState<ProductDTO[]>([]);
 	const valueInputDebounce = useDebounce<string>(valueInput);
-
+	const [showPodskazki, setShowPodskazki] = useState(true);
 	const navigate = useNavigate();
 
 	const onKeyDownInput = (event: React.KeyboardEvent<HTMLInputElement>) => {
 		if (event.key === 'Enter') {
+			setShowPodskazki(false);
 			navigate(`/search/${valueInput}`);
-			setValueInput('');
 		}
 	};
 
@@ -47,7 +47,9 @@ const SearchCatalog: FC = () => {
 					}}
 				/>
 			</div>
-			<ArrayFindItemsProducts arrayProducts={arrayProducts} />
+			{showPodskazki && (
+				<ArrayFindItemsProducts arrayProducts={arrayProducts} setShowPodskazki={setShowPodskazki} />
+			)}
 		</div>
 	);
 };

@@ -8,10 +8,11 @@ import {RevealText} from '../../../ui-kit/RevealText/RevealText';
 
 type findItemProductProps = {
 	product: ProductDTO;
+	setShowPodskazki: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const FindItemProduct: FC<findItemProductProps> = ({product}) => {
+const FindItemProduct: FC<findItemProductProps> = ({product, setShowPodskazki}) => {
 	return (
-		<Link to={`/product/${product.product_id}`}>
+		<Link to={`/product/${product.product_id}`} onClick={() => setShowPodskazki(false)}>
 			<div className={'wrapper_find_item_product'}>
 				<p>{product.product_name}</p>
 				<RevealText className={css.nameWrap} lines={1} direction={'bottom'}>
