@@ -6,9 +6,9 @@ import {ProductWithCategoryDTO} from '../../api/dto/product.dto';
 import css from './ProductsProducer.module.scss';
 import DeleteOutlinedCustom from './DeleteOutlinedCustom/DeleteOutlinedCustom';
 import EditOutlinedCustom from './EditOutlinedCustom/EditOutlinedCustom';
-import CreateCategoryForm from '../CreateCategoryForm/CreateCategoryForm';
+import CreateCategoryForm from '../Forms/CreateCategoryForm/CreateCategoryForm';
 import {useModalState} from '../../hooks/useModalState';
-import CreateProductForm from '../CreateProductForm/CreateProductForm';
+import CreateProductForm from '../Forms/CreateProductForm/CreateProductForm';
 import {Link} from 'react-router-dom';
 
 interface TableParams {
