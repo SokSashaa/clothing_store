@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import RegisterForm from '../../components/RegisterForm/RegisterForm';
+import RegisterForm from '../../components/Forms/RegisterForm/RegisterForm';
 import {useAppSelector} from '../../hooks/redux';
 import React from 'react';
 

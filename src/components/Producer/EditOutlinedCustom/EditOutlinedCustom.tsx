@@ -1,19 +1,23 @@
-import React, {FC, useState} from "react";
-import {ProductWithCategoryDTO} from "../../../api/dto/product.dto";
-import {EditOutlined} from "@ant-design/icons";
-import ModalUpdateProduct from "../../ModalUpdateProduct/ModalUpdateProduct";
+import React, {FC} from 'react';
+import {ProductWithCategoryDTO} from '../../../api/dto/product.dto';
+import {EditOutlined} from '@ant-design/icons';
+import {Modal} from 'antd';
+import {useModalState} from '../../../hooks/useModalState';
+import FormUpdateProduct from '../../Forms/FormUpdateProduct/FormUpdateProduct';
 
 type EditOutlinedCustomProps = {
-    product: ProductWithCategoryDTO
-}
+	product: ProductWithCategoryDTO;
+};
 const EditOutlinedCustom: FC<EditOutlinedCustomProps> = ({product}) => {
-    const [openModalUpdate, setOpenModalUpdate] = useState(false)
+	const [isModalOpen, openModal, closeModal] = useModalState(false);
 
-    return (
-        <>
-            <EditOutlined onClick={() => setOpenModalUpdate(true)}/>
-            <ModalUpdateProduct product={product} isOpenModal={openModalUpdate} setOpen={setOpenModalUpdate}/>
-        </>
-    )
-}
-export default EditOutlinedCustom
+	return (
+		<>
+			<EditOutlined onClick={openModal} />
+			<Modal open={isModalOpen} title="Обновление продукта" onCancel={closeModal} footer={null}>
+				<FormUpdateProduct product={product} closeModal={closeModal} />
+			</Modal>
+		</>
+	);
+};
+export default EditOutlinedCustom;
