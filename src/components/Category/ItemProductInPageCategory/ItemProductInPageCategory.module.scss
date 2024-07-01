@@ -148,6 +148,10 @@ a {
 
 .addToCartBtnWrap {
 	width: calc(100% + 8px);
+	display: flex;
+	flex-direction: column;
+	gap:10px;
+	align-items: center;
 	margin-left: -4px;
 	opacity: 0;
 	transition-property: opacity;
@@ -162,4 +166,25 @@ a {
 
 .addToCartBtn {
 	width: 100%;
+}
+
+.cartControls {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 20px;
+	//@include display-xs();
+}
+
+.cartFavorites{
+	position: absolute;
+	height: 30px;
+	width: 30px;
+	z-index: 2;
+	right: 5px;
+	font-size: 25px;
+
+	&:hover{
+		cursor: pointer;
+	}
 }

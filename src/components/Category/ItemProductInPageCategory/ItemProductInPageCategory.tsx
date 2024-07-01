@@ -1,25 +1,35 @@
-import {FC} from 'react';
+import React, {FC} from 'react';
 import css from './ItemProductInPageCategory.module.scss';
 import {getSrcOnImgProduct} from '../../../api/products';
 import {ProductDTO} from '../../../api/dto/product.dto';
-import React from 'react';
 import cn from 'classnames';
 import {calculatePriceAfterDiscount, formatPrice} from '../../../utils/formatPrice';
 import {RevealText} from '../../../ui-kit/RevealText/RevealText';
 import {Button} from '../../../ui-kit/Button/Button';
 import {ImageViewer} from '../../../ui-kit/ImageViewer/ImageViewer';
+import {addProductInCart, minusCountProduct, plusCountProduct} from '../../../store/reducers/cartSlice';
+import {useAppDispatch, useAppSelector} from '../../../hooks/redux';
+import {MinusOutlined, PlusOutlined, StarOutlined, StarTwoTone} from '@ant-design/icons';
 
 type ItemProductInPageCategoryProps = {
 	itemProduct: ProductDTO;
 };
 
 const ItemProductInPageCategory: FC<ItemProductInPageCategoryProps> = ({itemProduct}) => {
+	const dispatch = useAppDispatch();
+	const cart = useAppSelector((state) => state.cart);
+	const index = cart?.findIndex((item) => item.item.product_id === itemProduct.product_id);
+	const handleAddToCart = () => {
+		dispatch(addProductInCart({item: itemProduct, count: 1}));
+	};
+
 	return (
 		<a>
 			<div className={cn(css.root, css.defaultView)}>
 				{itemProduct.product_discount > 0 && (
 					<div className={css.discountPercent}>{(itemProduct.product_discount * 100).toFixed(0)}%</div>
 				)}
+				<StarTwoTone className={css.cartFavorites} />
 				<div className={css.photoWrap}>
 					<ImageViewer
 						images={itemProduct.product_image
@@ -59,6 +69,29 @@ const ItemProductInPageCategory: FC<ItemProductInPageCategoryProps> = ({itemProd
 					>
 						Посмотреть подробнее
 					</Button>
+					{index === -1 ? (
+						<Button className={css.addToCartBtn} onClick={handleAddToCart} styleType={'blue'}>
+							Добавить в корзину
+						</Button>
+					) : (
+						<div className={css.cartControls}>
+							<Button
+								size={'small'}
+								styleType={'secondary'}
+								onClick={() => dispatch(minusCountProduct(itemProduct.product_id))}
+							>
+								<MinusOutlined />
+							</Button>
+							{cart && index !== undefined ? cart[index].count : 0}
+							<Button
+								size={'small'}
+								styleType={'secondary'}
+								onClick={() => dispatch(plusCountProduct(itemProduct.product_id))}
+							>
+								<PlusOutlined />
+							</Button>
+						</div>
+					)}
 				</div>
 			</div>
 		</a>
