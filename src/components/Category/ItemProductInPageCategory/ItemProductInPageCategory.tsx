@@ -9,7 +9,10 @@ import {Button} from '../../../ui-kit/Button/Button';
 import {ImageViewer} from '../../../ui-kit/ImageViewer/ImageViewer';
 import {addProductInCart, minusCountProduct, plusCountProduct} from '../../../store/reducers/cartSlice';
 import {useAppDispatch, useAppSelector} from '../../../hooks/redux';
-import {MinusOutlined, PlusOutlined, StarOutlined, StarTwoTone} from '@ant-design/icons';
+import {MinusOutlined, PlusOutlined} from '@ant-design/icons';
+import FavouriteButton from '../../../ui-kit/FavouriteButton/FavouriteButton';
+import * as Api from '../../../api';
+import FavouriteButtonInItemProduct from '../FavouriteButtonInItemProduct/FavouriteButtonInItemProduct';
 
 type ItemProductInPageCategoryProps = {
 	itemProduct: ProductDTO;
@@ -29,7 +32,7 @@ const ItemProductInPageCategory: FC<ItemProductInPageCategoryProps> = ({itemProd
 				{itemProduct.product_discount > 0 && (
 					<div className={css.discountPercent}>{(itemProduct.product_discount * 100).toFixed(0)}%</div>
 				)}
-				<StarTwoTone className={css.cartFavorites} />
+				<FavouriteButtonInItemProduct itemProduct={itemProduct} />
 				<div className={css.photoWrap}>
 					<ImageViewer
 						images={itemProduct.product_image

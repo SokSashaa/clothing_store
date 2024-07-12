@@ -7,6 +7,7 @@ import {useAppDispatch} from '../../../hooks/redux';
 import * as Api from '../../../api';
 import {addUser} from '../../../store/reducers/userSlice';
 import {Cookies} from 'react-cookie';
+import {saveFavouriteArray} from '../../../store/reducers/favouritesSlice';
 
 const cookie = new Cookies();
 
@@ -19,7 +20,6 @@ const LogInForm: FC<LogInFormProps> = ({closeModal}) => {
 	const onSubmit = async (values: LoginFormDto) => {
 		try {
 			const {token, user} = await Api.auth.login(values);
-
 			dispatch(addUser(user));
 
 			notification.success({
@@ -29,10 +29,12 @@ const LogInForm: FC<LogInFormProps> = ({closeModal}) => {
 
 			cookie.set('_token', token, {path: '/'});
 
+			const favourites = await Api.favourites.getAllFavouritesByID();
+			dispatch(saveFavouriteArray(favourites));
 			// window.location.reload()
 		} catch (err) {
 			notification.error({
-				message: 'Неверная почта или пароль',
+				message: err.toString(),
 				duration: 2,
 			});
 		}
