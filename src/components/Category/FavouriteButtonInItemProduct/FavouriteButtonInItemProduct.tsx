@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useCallback, useEffect, useState} from 'react';
 import FavouriteButton from '../../../ui-kit/FavouriteButton/FavouriteButton';
 import * as Api from '../../../api';
 import {ProductDTO} from '../../../api/dto/product.dto';
@@ -13,13 +13,13 @@ const FavouriteButtonInItemProduct: FC<FavouriteButtonInItemProductProps> = ({it
 	const favourites = useAppSelector((state) => state.favourites);
 	const dispatch = useAppDispatch();
 
-	function favouriteActive() {
+	const favouriteActive = useCallback(() => {
 		Api.favourites.createFavourite(itemProduct).then((value) => dispatch(addFavouriteInState(value)));
-	}
+	}, [itemProduct]);
 
-	function favouriteNoActive() {
+	const favouriteNoActive = useCallback(() => {
 		Api.favourites.deleteFavourite(itemProduct).then(() => dispatch(deleteFavouriteProductFromState(itemProduct)));
-	}
+	}, [itemProduct]);
 
 	useEffect(() => {
 		if (favourites) {
