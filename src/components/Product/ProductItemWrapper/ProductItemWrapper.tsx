@@ -13,6 +13,7 @@ import cn from 'classnames';
 import {RevealText} from '../../../ui-kit/RevealText/RevealText';
 import {Button} from '../../../ui-kit/Button/Button';
 import {MinusOutlined, PlusOutlined} from '@ant-design/icons';
+import FavouriteButtonInItemProduct from '../../FavouriteButtonInItemProduct/FavouriteButtonInItemProduct';
 
 const ProductItemWrapper: FC = () => {
 	const [product, setProduct] = useState<ProductDTO>(initialProductDTO);
@@ -90,6 +91,7 @@ const ProductItemWrapper: FC = () => {
 					)}
 				</div>
 			</div>
+			<FavouriteButtonInItemProduct itemProduct={product} />
 		</div>
 	);
 };

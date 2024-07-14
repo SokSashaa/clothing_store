@@ -12,7 +12,7 @@ import {useAppDispatch, useAppSelector} from '../../../hooks/redux';
 import {MinusOutlined, PlusOutlined} from '@ant-design/icons';
 import FavouriteButton from '../../../ui-kit/FavouriteButton/FavouriteButton';
 import * as Api from '../../../api';
-import FavouriteButtonInItemProduct from '../FavouriteButtonInItemProduct/FavouriteButtonInItemProduct';
+import FavouriteButtonInItemProduct from '../../FavouriteButtonInItemProduct/FavouriteButtonInItemProduct';
 
 type ItemProductInPageCategoryProps = {
 	itemProduct: ProductDTO;

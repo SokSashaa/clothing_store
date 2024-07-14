@@ -1,7 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {ProductDTO} from '../../api/dto/product.dto';
-import {cartSlice} from './cartSlice';
-import {userSlice} from './userSlice';
 import {favouritesDTOOmitUser} from '../../api/dto/favourites.dto';
 
 const initialStateFavouriteSlice: favouritesDTOOmitUser[] = [];
@@ -25,6 +23,9 @@ export const favouritesSlice = createSlice({
 		saveFavouriteArray(state, action: PayloadAction<favouritesDTOOmitUser[]>) {
 			state.push(...action.payload);
 		},
+		addProductInState(state, action: PayloadAction<ProductDTO>) {
+			state.push({favourite_id: '', product: action.payload});
+		},
 	},
 });
 
@@ -34,5 +35,6 @@ export const {
 	clearFavourites,
 	deleteFavouriteProductFromState,
 	saveFavouriteArray,
+	addProductInState,
 } = favouritesSlice.actions;
 export default favouritesSlice.reducer;
