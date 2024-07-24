@@ -7,6 +7,8 @@ export const routesMap = {
 	categoriesWithId: '/categories/:id',
 	news: '/news',
 	cart: '/cart',
+	favourites: '/favourites',
+	history: '/history',
 
 	register: '/register',
 	product: '/product/:id',

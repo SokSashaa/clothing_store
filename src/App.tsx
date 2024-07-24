@@ -20,6 +20,7 @@ import ProductsProducer from './components/Producer/ProductsProducer';
 import Wrapper from './components/Wrapper/Wrapper';
 import {CartPage} from './pages/CartPage/CartPage';
 import {routesMap} from './utils/routesMap';
+import FavouritesPage from './pages/FavouritesPage/FavouritesPage';
 
 function App() {
 	const dispatch = useAppDispatch();
@@ -34,7 +35,7 @@ function App() {
 				<Route path={routesMap.register} element={<RegisterPage />} />
 				<Route path={routesMap.product} element={<ProductPage />} />
 				<Route path={routesMap.search} element={<SearchPage />} />
-				<Route path={'/favorite'} element={<></>} />
+				<Route path={routesMap.favourites} element={<FavouritesPage />} />
 				<Route path={routesMap.cart} element={<CartPage />} />
 				<Route element={<ProtectedRoute rule={'user'} />}>
 					<Route path={routesMap.account} element={<AccountPage />} />
@@ -55,4 +56,5 @@ function App() {
 		</Wrapper>
 	);
 }
+
 export default App;

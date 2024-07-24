@@ -8,6 +8,7 @@ import {Cookies} from 'react-cookie';
 import {deleteUser} from '../../store/reducers/userSlice';
 import {Roles} from '../../api/dto/auth.dto';
 import {persistor} from '../../store/store';
+import {routesMap} from '../../utils/routesMap';
 
 type DropDownAccountProps = {
 	children: React.ReactNode;
@@ -28,12 +29,12 @@ const DropDownAccount: FC<DropDownAccountProps> = ({children}) => {
 	const items: MenuProps['items'] = [
 		{
 			key: '1',
-			label: <Link to={'/account'}>Личные данные</Link>,
+			label: <Link to={routesMap.account}>Личные данные</Link>,
 		},
 		{
 			key: '2',
 			label: (
-				<Link to={'/favorites'}>
+				<Link to={routesMap.favourites}>
 					<StarOutlined />
 					Избранное
 				</Link>
@@ -41,18 +42,18 @@ const DropDownAccount: FC<DropDownAccountProps> = ({children}) => {
 		},
 		{
 			key: '3',
-			label: <Link to={'/history'}>История заказов</Link>,
+			label: <Link to={routesMap.history}>История заказов</Link>,
 		},
 		userRedux?.role === Roles.admin
 			? {
 					key: '4',
-					label: <Link to={'/admin'}>Админка</Link>,
+					label: <Link to={routesMap.admin.page}>Админка</Link>,
 				}
 			: null,
 		userRedux?.role === Roles.producer
 			? {
 					key: '5',
-					label: <Link to={'/myCompany'}>Моя компания</Link>,
+					label: <Link to={routesMap.myCompany.page}>Моя компания</Link>,
 				}
 			: null,
 		{
