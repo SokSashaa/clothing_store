@@ -2,13 +2,12 @@ import React, {FC} from 'react';
 import {LoginFormDto} from '../../../api/dto/auth.dto';
 import {Button, Checkbox, Form, Input, notification} from 'antd';
 import {LockOutlined, UserOutlined} from '@ant-design/icons';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {useAppDispatch} from '../../../hooks/redux';
 import * as Api from '../../../api';
 import {addUser} from '../../../store/reducers/userSlice';
 import {Cookies} from 'react-cookie';
-import {clearFavourites, saveFavouriteArray} from '../../../store/reducers/favouritesSlice';
-import {persistor} from '../../../store/store';
+import {saveFavouriteNewArray} from '../../../store/reducers/favouritesSlice';
 
 const cookie = new Cookies();
 
@@ -17,12 +16,12 @@ type LogInFormProps = {
 };
 const LogInForm: FC<LogInFormProps> = ({closeModal}) => {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+
 	const onSubmit = async (values: LoginFormDto) => {
-		await persistor.purge(); // не работает
 		try {
 			const {token, user} = await Api.auth.login(values);
 			dispatch(addUser(user));
-
 			notification.success({
 				message: 'Успешно',
 				duration: 2,
@@ -31,7 +30,8 @@ const LogInForm: FC<LogInFormProps> = ({closeModal}) => {
 			cookie.set('_token', token, {path: '/'});
 
 			const favourites = await Api.favourites.getAllFavouritesByID();
-			dispatch(saveFavouriteArray(favourites));
+			dispatch(saveFavouriteNewArray(favourites));
+			navigate(0);
 		} catch (err) {
 			notification.error({
 				message: err.toString(),

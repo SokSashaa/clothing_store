@@ -20,7 +20,8 @@ export const favouritesSlice = createSlice({
 		clearFavourites(state) {
 			state.splice(0, state.length);
 		},
-		saveFavouriteArray(state, action: PayloadAction<favouritesDTOOmitUser[]>) {
+		saveFavouriteNewArray(state, action: PayloadAction<favouritesDTOOmitUser[]>) {
+			state.splice(0, state.length);
 			state.push(...action.payload);
 		},
 		addProductInState(state, action: PayloadAction<ProductDTO>) {
@@ -34,7 +35,7 @@ export const {
 	deleteFavouriteFromState,
 	clearFavourites,
 	deleteFavouriteProductFromState,
-	saveFavouriteArray,
+	saveFavouriteNewArray,
 	addProductInState,
 } = favouritesSlice.actions;
 export default favouritesSlice.reducer;

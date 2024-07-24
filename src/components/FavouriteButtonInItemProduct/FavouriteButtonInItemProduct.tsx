@@ -17,7 +17,6 @@ const FavouriteButtonInItemProduct: FC<FavouriteButtonInItemProductProps> = ({it
 	const favourites = useAppSelector((state) => state.favourites);
 	const user = useAppSelector((state) => state.user);
 	const dispatch = useAppDispatch();
-	console.log(favourites);
 
 	const favouriteActive = useCallback(() => {
 		if (user?.email !== '') {
