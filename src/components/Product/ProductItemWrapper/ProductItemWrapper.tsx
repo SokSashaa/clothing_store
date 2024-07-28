@@ -14,6 +14,7 @@ import {RevealText} from '../../../ui-kit/RevealText/RevealText';
 import {Button} from '../../../ui-kit/Button/Button';
 import {MinusOutlined, PlusOutlined} from '@ant-design/icons';
 import FavouriteButtonInItemProduct from '../../FavouriteButtonInItemProduct/FavouriteButtonInItemProduct';
+import {Helmet} from 'react-helmet';
 
 const ProductItemWrapper: FC = () => {
 	const [product, setProduct] = useState<ProductDTO>(initialProductDTO);
@@ -32,6 +33,10 @@ const ProductItemWrapper: FC = () => {
 
 	return (
 		<div className={css.product_item_wrapper}>
+			<Helmet>
+				<title>{product.product_name} - СпецОдежда</title>
+				<meta name={'description'} content={product.product_name + '. ' + product.product_description} />
+			</Helmet>
 			<ImageViewer
 				images={product.product_image
 					.split(',')

@@ -8,6 +8,7 @@ import * as Api from '../../../api';
 import {addUser} from '../../../store/reducers/userSlice';
 import {Cookies} from 'react-cookie';
 import {saveFavouriteNewArray} from '../../../store/reducers/favouritesSlice';
+import {persistor} from '../../../store/store';
 
 const cookie = new Cookies();
 
@@ -20,6 +21,7 @@ const LogInForm: FC<LogInFormProps> = ({closeModal}) => {
 
 	const onSubmit = async (values: LoginFormDto) => {
 		try {
+			await persistor.purge();
 			const {token, user} = await Api.auth.login(values);
 			dispatch(addUser(user));
 			notification.success({

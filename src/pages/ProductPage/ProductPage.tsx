@@ -3,6 +3,10 @@ import ProductItemWrapper from '../../components/Product/ProductItemWrapper/Prod
 import React from 'react';
 
 const ProductPage: FC = () => {
-	return <ProductItemWrapper />;
+	return (
+		<>
+			<ProductItemWrapper />
+		</>
+	);
 };
 export default ProductPage;

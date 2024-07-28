@@ -15,6 +15,7 @@ import {sum, sumBy} from 'lodash';
 import {Button} from '../../ui-kit/Button/Button';
 import {confirmation} from '../../ui-kit/Confirmation/confirmation';
 import {MinusOutlined, PlusOutlined} from '@ant-design/icons';
+import {Helmet} from 'react-helmet';
 
 const defaultPagination: TablePaginationConfig & {
 	skip: number;
@@ -173,6 +174,10 @@ export const CartPage = () => {
 
 	return (
 		<div className={css.main}>
+			<Helmet>
+				<title>Корзина - СпецОдежда</title>
+				<meta name={'description'} content={'Корзина пользователя'} />
+			</Helmet>
 			<PageTitle className={css.title}>
 				<h1>Корзина</h1>
 			</PageTitle>

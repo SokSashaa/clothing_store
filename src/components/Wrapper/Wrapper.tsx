@@ -12,6 +12,7 @@ const Wrapper: FC<propsWrapper> = ({children}) => {
 		<div className={css.master}>
 			<main>
 				<Header />
+				{/*<Breadcrumbs />*/}
 				{children}
 			</main>
 			<Footer />

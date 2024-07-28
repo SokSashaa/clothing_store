@@ -1,10 +1,16 @@
-import {FC} from 'react';
-import {Cookies} from 'react-cookie';
+import React, {FC} from 'react';
 import AccountInfo from '../../components/AccountInfo/AccountInfo';
-import React from 'react';
+import {Helmet} from 'react-helmet';
 
-const cookies = new Cookies();
 const AccountPage: FC = () => {
-	return <AccountInfo />;
+	return (
+		<>
+			<Helmet>
+				<title>Аккаунт - СпецОдежда</title>
+				<meta name={'description'} content={'Личный аккаунт пользователя'} />
+			</Helmet>
+			<AccountInfo />
+		</>
+	);
 };
 export default AccountPage;
