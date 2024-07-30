@@ -1,3 +1,12 @@
+Технологии:
+Front: 
+  React
+  React-router
+  Redux-Persist
+
+Back:
+  Nest
+
 Как выглядит проект(в доработке)
 
 ЛК:
