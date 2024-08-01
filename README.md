@@ -1,46 +1,32 @@
-# Getting Started with Create React App
+Технологии:
+Front: 
+  React
+  React-router
+  Redux-Persist
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Back:
+  Nest
 
-## Available Scripts
+Как выглядит проект(в доработке)
 
-In the project directory, you can run:
+ЛК:
+![image](https://github.com/user-attachments/assets/1ba12a3d-4101-4e34-82f1-b74ca6609783)
 
-### `npm start`
+Страница с избранным:
+![image](https://github.com/user-attachments/assets/535bd5ea-b748-424e-bc1c-4259543dc211)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Страница с продуктами: 
+![image](https://github.com/user-attachments/assets/242e672f-d12e-4236-b868-c82f72b94e27)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Страница продукта: ![image](https://github.com/user-attachments/assets/fe7f3996-f6d7-445f-af85-df803ebd18c0)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Админка:
+  Редактирование пользователей: ![image](https://github.com/user-attachments/assets/5b932e7e-95e6-41ea-8e46-aac56adc7271)
+  Редактирование компаний: ![image](https://github.com/user-attachments/assets/57b2c150-539a-4f46-b16a-af2e0509a7e6)
+  Создание компаний: ![image](https://github.com/user-attachments/assets/9c649af4-581d-45a8-b66a-50b1a3b23dd4)
+  Создание/редактирование категорий товаров: ![image](https://github.com/user-attachments/assets/054c3394-3024-4df3-9a3e-7d20d39989be)
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Меню продавца: 
+  Управление продуктами компании: ![image](https://github.com/user-attachments/assets/b997857c-6423-4b5a-999b-00f2588e0571)
+  Редактирование/Создание продуктов: ![image](https://github.com/user-attachments/assets/3270f011-ff2e-4593-897f-0dbac1241cee)
