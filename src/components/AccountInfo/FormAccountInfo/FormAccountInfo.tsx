@@ -25,6 +25,7 @@ const FormAccountInfo: FC = () => {
 				});
 		}
 	};
+
 	return (
 		<Form
 			name="accountSetting"

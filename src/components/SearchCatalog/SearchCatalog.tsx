@@ -17,8 +17,10 @@ const SearchCatalog: FC = () => {
 
 	const onKeyDownInput = (event: React.KeyboardEvent<HTMLInputElement>) => {
 		if (event.key === 'Enter') {
+			console.log('value', valueInput);
 			setShowPodskazki(false);
-			navigate(`/search/${valueInput}`);
+			// navigate(`/search/${valueInput}`);
+			window.location.href = `/search/${valueInput}`;
 		}
 	};
 
