@@ -1,0 +1,34 @@
+.root{
+  width: 260px;
+  height: 250px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  overflow-y: auto;
+}
+
+.root::-webkit-scrollbar{
+  width: 3px;
+}
+
+.root::-webkit-scrollbar-thumb{
+  background-color: gray;
+  border-radius: 100px;
+}
+
+.root::-webkit-scrollbar-track{
+  margin: 10px 0;
+}
+
+.items{
+  margin-top: 10px ;
+}
+
+.item{
+  display: flex;
+
+  p{
+    color: black;
+    margin-left: 5px;
+  }
+}
