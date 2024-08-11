@@ -1,8 +1,9 @@
 import {FC} from 'react';
 import DropDownAccount from './DropDownAccount';
 import account from '../../images/account.svg';
-import Cart from '../Cart/Cart';
+import Cart from '../Header/Cart/Cart';
 import React from 'react';
+import FavouriteButtonInHeader from '../Header/FavouriteButtonInHeader/FavouriteButtonInHeader';
 
 const MainDropDownAccount: FC = () => {
 	return (
@@ -14,6 +15,7 @@ const MainDropDownAccount: FC = () => {
 				</div>
 			</DropDownAccount>
 			<Cart />
+			<FavouriteButtonInHeader />
 		</div>
 	);
 };

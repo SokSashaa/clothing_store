@@ -33,31 +33,22 @@ const DropDownAccount: FC<DropDownAccountProps> = ({children}) => {
 		},
 		{
 			key: '2',
-			label: (
-				<Link to={routesMap.favourites}>
-					<StarOutlined />
-					Избранное
-				</Link>
-			),
-		},
-		{
-			key: '3',
 			label: <Link to={routesMap.history}>История заказов</Link>,
 		},
 		userRedux?.role === Roles.admin
 			? {
-					key: '4',
+					key: '3',
 					label: <Link to={routesMap.admin.page}>Админка</Link>,
 				}
 			: null,
 		userRedux?.role === Roles.producer
 			? {
-					key: '5',
+					key: '4',
 					label: <Link to={routesMap.myCompany.page}>Моя компания</Link>,
 				}
 			: null,
 		{
-			key: '6',
+			key: '5',
 			label: <p>Выход</p>,
 			onClick: logOutAccount,
 		},

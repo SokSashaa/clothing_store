@@ -1,10 +1,10 @@
 import {FC} from 'react';
 import css from './Cart.module.scss';
-import cart from '../../images/shopcart.svg';
-import {useAppSelector} from '../../hooks/redux';
+import cart from '../../../images/shopcart.svg';
+import {useAppSelector} from '../../../hooks/redux';
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {routesMap} from '../../utils/routesMap';
+import {routesMap} from '../../../utils/routesMap';
 import {sumBy} from 'lodash';
 
 const Cart: FC = () => {
