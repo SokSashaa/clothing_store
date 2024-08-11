@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {CSSProperties, useCallback, useMemo, useState} from 'react';
+import {CSSProperties, useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import cn from 'classnames';
 import {DivWithOutsideClick} from '../../../../ui-kit/DivWithOutsideClick/DivWithOutsideClick';
 
@@ -11,10 +11,14 @@ import {useIsMounted} from '../../../../hooks/useIsMounted';
 import {BetterInput} from '../../../../ui-kit/BetterInput/BetterInput';
 import {Button} from '../../../../ui-kit/Button/Button';
 import {calculatePriceAfterDiscount} from '../../../../utils/formatPrice';
+import MenuWithCheckBox from '../../../../ui-kit/MenuWithCheckBox/MenuWithCheckBox';
+import {initialStateGetAllCompaniesName} from '../../../../api/dto/company.dto';
+import * as Api from '../../../../api';
 
 export type AppraiseFilterAdaptiveProps = {
 	products: ProductDTO[];
 	handleApplyFilter: (fromTo: [number, number]) => void;
+	setProducts?: React.Dispatch<React.SetStateAction<ProductDTO[]>>;
 };
 
 export function AppraiseFilters(props: AppraiseFilterAdaptiveProps) {
@@ -23,6 +27,8 @@ export function AppraiseFilters(props: AppraiseFilterAdaptiveProps) {
 	const handleClose = useCallback(() => setIsOpen(false), []);
 	const isMounted = useIsMounted();
 	const isDisabled = !useIsMounted();
+	const [companiesForFilter, setCompaniesForFilter] = useState(initialStateGetAllCompaniesName);
+	const [accessCompanies, setAccessCompanies] = useState<string[]>([]);
 
 	const minValue =
 		props.products.length > 1
@@ -92,6 +98,18 @@ export function AppraiseFilters(props: AppraiseFilterAdaptiveProps) {
 			{} as Record<string, string>
 		) as CSSProperties;
 	}, [rangeValues, minValue, maxValue]);
+
+	useEffect(() => {
+		Api.company.getAllCompaniesName().then((value) => {
+			setCompaniesForFilter(value);
+		});
+	}, []);
+
+	const filterNamesCompanies = useCallback(() => {
+		if (props.setProducts && accessCompanies.length > 0)
+			props.setProducts((value) => value.filter((item) => accessCompanies.includes(item.company_id)));
+	}, [accessCompanies, props]);
+
 	return (
 		<DivWithOutsideClick className={cn(css.root, isOpen && css.isOpen)} onOutsideClick={handleClose}>
 			<div className={css.button} onClick={onButtonClick} />
@@ -161,7 +179,18 @@ export function AppraiseFilters(props: AppraiseFilterAdaptiveProps) {
 				<div className={css.closeButton} onClick={onButtonClick}>
 					×
 				</div>
-				<Button styleType={'blue'} onClick={() => props.handleApplyFilter(fromTo)}>
+				<MenuWithCheckBox
+					arrayForSort={companiesForFilter}
+					accessArray={accessCompanies}
+					setItemInAccessArray={setAccessCompanies}
+				/>
+				<Button
+					styleType={'blue'}
+					onClick={() => {
+						props.handleApplyFilter(fromTo);
+						filterNamesCompanies();
+					}}
+				>
 					Применить
 				</Button>
 			</div>

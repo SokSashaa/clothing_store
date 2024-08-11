@@ -8,7 +8,6 @@ import css from './BlockItemsProductsInCategory.module.scss';
 import {PageTitle} from '../../../ui-kit/PageTitle/PageTitle';
 import {SidebarLayout} from './SidebarLayout/SidebarLayout';
 import {calculatePriceAfterDiscount} from '../../../utils/formatPrice';
-import {Helmet} from 'react-helmet';
 
 const BlockItemsProductInCategory: FC = () => {
 	const [initialProducts, setInitialProducts] = useState<ProductDTO[]>([]);
@@ -43,11 +42,18 @@ const BlockItemsProductInCategory: FC = () => {
 		},
 		[initialProducts, products]
 	);
+
 	return (
 		<div className={css.wrapper}>
 			{initialProducts.length > 0 ? (
 				<SidebarLayout
-					afterMenuSlot={<AppraiseFilters products={initialProducts} handleApplyFilter={handleApplyFilter} />}
+					afterMenuSlot={
+						<AppraiseFilters
+							products={initialProducts}
+							handleApplyFilter={handleApplyFilter}
+							setProducts={setProducts}
+						/>
+					}
 					offsetTop={100}
 				>
 					{products.length > 0 ? (
