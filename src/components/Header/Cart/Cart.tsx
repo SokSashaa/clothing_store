@@ -14,7 +14,7 @@ const Cart: FC = () => {
 		<Link to={routesMap.cart} className={css.blockWrapperIconInHeader}>
 			<div className={css.cartInHeader}>
 				<img className={css.imgInHeader} src={cart} alt={'Корзина'} />
-				{countInCart && countInCart.length > 0 && <p>{sumBy(countInCart, 'count')}</p>}
+				{countInCart && countInCart.length > 0 && <p>{sumBy(countInCart, 'count_product')}</p>}
 			</div>
 			<p>Корзина</p>
 		</Link>

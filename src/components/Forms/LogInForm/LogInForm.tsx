@@ -9,6 +9,7 @@ import {addUser} from '../../../store/reducers/userSlice';
 import {Cookies} from 'react-cookie';
 import {saveFavouriteNewArray} from '../../../store/reducers/favouritesSlice';
 import {persistor} from '../../../store/store';
+import {addArrayProductsInCart, addProductInCart} from '../../../store/reducers/cartSlice';
 
 const cookie = new Cookies();
 
@@ -33,6 +34,10 @@ const LogInForm: FC<LogInFormProps> = ({closeModal}) => {
 
 			const favourites = await Api.favourites.getAllFavouritesByID();
 			dispatch(saveFavouriteNewArray(favourites));
+
+			const productsInCart = await Api.cart.getUserCart();
+			dispatch(addArrayProductsInCart(productsInCart));
+
 			navigate(0);
 		} catch (err) {
 			notification.error({

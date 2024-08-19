@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import css from './ProductItemWrapper.module.scss';
 import {getSrcOnImgProduct} from '../../../api/products';
 import * as Api from '../../../api';
@@ -6,7 +6,6 @@ import {useParams} from 'react-router-dom';
 import {initialProductDTO, ProductDTO} from '../../../api/dto/product.dto';
 import {useAppDispatch, useAppSelector} from '../../../hooks/redux';
 import {addProductInCart, minusCountProduct, plusCountProduct} from '../../../store/reducers/cartSlice';
-import React from 'react';
 import {ImageViewer} from '../../../ui-kit/ImageViewer/ImageViewer';
 import {formatPrice} from '../../../utils/formatPrice';
 import cn from 'classnames';
@@ -24,11 +23,41 @@ const ProductItemWrapper: FC = () => {
 	}, [id]);
 
 	const cart = useAppSelector((state) => state.cart);
-	const index = cart?.findIndex((item) => item.item.product_id === product.product_id);
+	const user = useAppSelector((state) => state.user);
+	const index = cart?.findIndex((item) => item.id_product.product_id === product.product_id);
 	const dispatch = useAppDispatch();
 
 	const handleAddToCart = () => {
-		dispatch(addProductInCart({item: product, count: 1}));
+		dispatch(addProductInCart({id_product: product, count_product: 1}));
+
+		if (user?.email !== '') {
+			Api.cart.createProductInCart({
+				id_product: product,
+				count_product: 1,
+			});
+		}
+	};
+
+	const handlePlusCountProduct = () => {
+		dispatch(plusCountProduct(product.product_id));
+
+		if (user?.email !== '') {
+			Api.cart.updateProductInCart({
+				id_product: product,
+				count_product: cart && index !== undefined ? cart[index].count_product++ : 1,
+			});
+		}
+	};
+
+	const handleMinusCountProduct = () => {
+		dispatch(minusCountProduct(product.product_id));
+
+		if (user?.email !== '') {
+			Api.cart.updateProductInCart({
+				id_product: product,
+				count_product: cart && index !== undefined ? cart[index].count_product-- : 1,
+			});
+		}
 	};
 
 	return (
@@ -84,7 +113,7 @@ const ProductItemWrapper: FC = () => {
 							>
 								<MinusOutlined />
 							</Button>
-							{cart && index !== undefined ? cart[index].count : 0}
+							{cart && index !== undefined ? cart[index].count_product : 0}
 							<Button
 								size={'large'}
 								styleType={'secondary'}

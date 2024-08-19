@@ -5,7 +5,7 @@ import {Checkbox, Empty, notification, Table, TablePaginationConfig} from 'antd'
 import {PageTitle} from '../../ui-kit/PageTitle/PageTitle';
 import {usePagination} from '../../hooks/usePagination';
 import {ColumnProps} from 'antd/es/table';
-import {itemCart, minusCountProduct, plusCountProduct, removeProductFromCart} from '../../store/reducers/cartSlice';
+import {minusCountProduct, plusCountProduct, removeProductFromCart} from '../../store/reducers/cartSlice';
 import {ImageViewer} from '../../ui-kit/ImageViewer/ImageViewer';
 import {getSrcOnImgProduct} from '../../api/products';
 import cn from 'classnames';
@@ -16,6 +16,7 @@ import {Button} from '../../ui-kit/Button/Button';
 import {confirmation} from '../../ui-kit/Confirmation/confirmation';
 import {MinusOutlined, PlusOutlined} from '@ant-design/icons';
 import {Helmet} from 'react-helmet';
+import {cartDto} from '../../api/dto/cart.dto';
 
 const defaultPagination: TablePaginationConfig & {
 	skip: number;
@@ -30,28 +31,31 @@ const defaultPagination: TablePaginationConfig & {
 export const CartPage = () => {
 	const cart = useAppSelector((state) => state.cart);
 	const dispatch = useAppDispatch();
-	const [selectedItems, setSelectedItems] = useState<itemCart[] | undefined>(cart);
+	const [selectedItems, setSelectedItems] = useState<cartDto[] | undefined>(cart);
 	const {pagination, tableProps: paginationTableProps} = usePagination(cart?.length || 0, defaultPagination);
 
 	if (cart === undefined) {
 		return <h1>Корзина пуста</h1>;
 	}
 
-	const columns: ColumnProps<itemCart>[] = [
+	const columns: ColumnProps<cartDto>[] = [
 		{
 			title: 'Выбор',
 			width: 50,
 			align: 'center',
 			render: (_, record) => {
 				const isChecked =
-					selectedItems!.find((item) => item.item.product_id === record.item.product_id) !== undefined;
+					selectedItems!.find((item) => item.id_product.product_id === record.id_product.product_id) !==
+					undefined;
 				return (
 					<Checkbox
 						checked={isChecked}
 						onChange={() => {
 							setSelectedItems(
 								isChecked
-									? selectedItems!.filter((item) => item.item.product_id !== record.item.product_id)
+									? selectedItems!.filter(
+											(item) => item.id_product.product_id !== record.id_product.product_id
+										)
 									: [...selectedItems!, record]
 							);
 						}}
@@ -64,7 +68,7 @@ export const CartPage = () => {
 			width: 300,
 			render: (_, record) => (
 				<ImageViewer
-					images={record.item.product_image
+					images={record.id_product.product_image
 						.split(',')
 						.filter((item) => item !== '')
 						.map((item, index) => (
@@ -80,26 +84,29 @@ export const CartPage = () => {
 		},
 		{
 			title: 'Название',
-			render: (_, record) => record.item.product_name,
+			render: (_, record) => record.id_product.product_name,
 		},
 		{
 			title: 'Цена',
 			width: 180,
 			render: (_, record) => (
 				<div className={css.priceWrap}>
-					<div className={cn(css.price, record.item.product_discount > 0 && css.discountedPrice)}>
+					<div className={cn(css.price, record.id_product.product_discount > 0 && css.discountedPrice)}>
 						{formatPrice(
-							calculatePriceAfterDiscount(record.item.product_price, record.item.product_discount)
+							calculatePriceAfterDiscount(
+								record.id_product.product_price,
+								record.id_product.product_discount
+							)
 						)}
 					</div>
-					{record.item.product_discount > 0 && (
-						<div className={css.oldPrice}>{formatPrice(record.item.product_price)}</div>
+					{record.id_product.product_discount > 0 && (
+						<div className={css.oldPrice}>{formatPrice(record.id_product.product_price)}</div>
 					)}
 				</div>
 			),
 		},
 		{
-			dataIndex: 'count',
+			dataIndex: 'count_product',
 			title: 'Количество',
 			width: 150,
 			render: (value, record) => (
@@ -109,27 +116,29 @@ export const CartPage = () => {
 						styleType={'secondary'}
 						onClick={() => {
 							const currentCount = selectedItems?.filter(
-								(item) => item.item.product_id === record.item.product_id
-							)[0].count;
+								(item) => item.id_product.product_id === record.id_product.product_id
+							)[0].count_product;
 							if (currentCount === undefined) return;
 							if (currentCount > 1) {
-								dispatch(minusCountProduct(record.item.product_id));
+								dispatch(minusCountProduct(record.id_product.product_id));
 								setSelectedItems(
 									selectedItems?.map((item) => {
-										let count = item.count;
-										if (item.item.product_id === record.item.product_id) {
+										let count = item.count_product;
+										if (item.id_product.product_id === record.id_product.product_id) {
 											count = currentCount - 1;
 										}
 										return {
-											item: item.item,
-											count: count,
+											id_product: item.id_product,
+											count_product: count,
 										};
 									})
 								);
 							} else {
-								dispatch(removeProductFromCart(record.item.product_id));
+								dispatch(removeProductFromCart(record.id_product.product_id));
 								setSelectedItems(
-									selectedItems?.filter((item) => item.item.product_id !== record.item.product_id)
+									selectedItems?.filter(
+										(item) => item.id_product.product_id !== record.id_product.product_id
+									)
 								);
 							}
 						}}
@@ -141,16 +150,16 @@ export const CartPage = () => {
 						size={'small'}
 						styleType={'secondary'}
 						onClick={() => {
-							dispatch(plusCountProduct(record.item.product_id));
+							dispatch(plusCountProduct(record.id_product.product_id));
 							setSelectedItems(
 								selectedItems?.map((item) => {
-									let count = item.count;
-									if (item.item.product_id === record.item.product_id) {
-										count = item.count + 1;
+									let count = item.count_product;
+									if (item.id_product.product_id === record.id_product.product_id) {
+										count = item.count_product + 1;
 									}
 									return {
-										item: item.item,
-										count: count,
+										id_product: item.id_product,
+										count_product: count,
 									};
 								})
 							);
@@ -166,7 +175,7 @@ export const CartPage = () => {
 			width: 200,
 			render: (_, record) => (
 				<RevealText className={css.nameWrap} lines={3} direction={'bottom'}>
-					<div className={css.name}>{record.item.product_description}</div>
+					<div className={css.name}>{record.id_product.product_description}</div>
 				</RevealText>
 			),
 		},
@@ -205,7 +214,7 @@ export const CartPage = () => {
 						</p>
 						<p className={css.countPieces}>
 							<span className={css.firstText}>Итого товаров:</span>{' '}
-							<span className={css.secondText}>{sumBy(selectedItems, 'count')}</span>
+							<span className={css.secondText}>{sumBy(selectedItems, 'count_product')}</span>
 						</p>
 					</div>
 					<div className={css.bottom}>
@@ -216,10 +225,10 @@ export const CartPage = () => {
 									sum(
 										selectedItems?.map(
 											(item) =>
-												item.count *
+												item.count_product *
 												calculatePriceAfterDiscount(
-													item.item.product_price,
-													item.item.product_discount
+													item.id_product.product_price,
+													item.id_product.product_discount
 												)
 										)
 									)
@@ -236,20 +245,21 @@ export const CartPage = () => {
 										sum(
 											selectedItems?.map(
 												(item) =>
-													item.count *
+													item.count_product *
 													calculatePriceAfterDiscount(
-														item.item.product_price,
-														item.item.product_discount
+														item.id_product.product_price,
+														item.id_product.product_discount
 													)
 											)
 										)
 									)}?`,
 									onOk: () => {
 										selectedItems?.map((item) => {
-											dispatch(removeProductFromCart(item.item.product_id));
+											dispatch(removeProductFromCart(item.id_product.product_id));
 											setSelectedItems(
 												selectedItems?.filter(
-													(fltering) => item.item.product_id !== fltering.item.product_id
+													(fltering) =>
+														item.id_product.product_id !== fltering.id_product.product_id
 												)
 											);
 										});

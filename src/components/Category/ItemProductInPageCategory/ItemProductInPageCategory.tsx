@@ -10,7 +10,6 @@ import {ImageViewer} from '../../../ui-kit/ImageViewer/ImageViewer';
 import {addProductInCart, minusCountProduct, plusCountProduct} from '../../../store/reducers/cartSlice';
 import {useAppDispatch, useAppSelector} from '../../../hooks/redux';
 import {MinusOutlined, PlusOutlined} from '@ant-design/icons';
-import FavouriteButton from '../../../ui-kit/FavouriteButton/FavouriteButton';
 import * as Api from '../../../api';
 import FavouriteButtonInItemProduct from '../../FavouriteButtonInItemProduct/FavouriteButtonInItemProduct';
 
@@ -21,9 +20,17 @@ type ItemProductInPageCategoryProps = {
 const ItemProductInPageCategory: FC<ItemProductInPageCategoryProps> = ({itemProduct}) => {
 	const dispatch = useAppDispatch();
 	const cart = useAppSelector((state) => state.cart);
-	const index = cart?.findIndex((item) => item.item.product_id === itemProduct.product_id);
+	const user = useAppSelector((state) => state.user);
+	const index = cart?.findIndex((item) => item.id_product.product_id === itemProduct.product_id);
 	const handleAddToCart = () => {
-		dispatch(addProductInCart({item: itemProduct, count: 1}));
+		dispatch(addProductInCart({id_product: itemProduct, count_product: 1}));
+
+		if (user?.email !== '') {
+			Api.cart.createProductInCart({
+				id_product: itemProduct,
+				count_product: 1,
+			});
+		}
 	};
 
 	return (
@@ -85,7 +92,7 @@ const ItemProductInPageCategory: FC<ItemProductInPageCategoryProps> = ({itemProd
 							>
 								<MinusOutlined />
 							</Button>
-							{cart && index !== undefined ? cart[index].count : 0}
+							{cart && index !== undefined ? cart[index].count_product : 0}
 							<Button
 								size={'small'}
 								styleType={'secondary'}
