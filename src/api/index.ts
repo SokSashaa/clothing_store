@@ -4,3 +4,4 @@ export * as products from './products';
 export * as userApi from './userApi';
 export * as company from './company';
 export * as favourites from './favourites';
+export * as cart from './cart';
