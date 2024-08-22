@@ -21,11 +21,11 @@ const MenuWithCheckBox: FC<MenuWithCheckBoxProps> = ({accessArray = [], setItemI
 	};
 
 	useEffect(() => {
-		setArray(props.arrayForSort.filter((item) => item.name.includes(valueSearch)));
+		setArray(props.arrayForSort.filter((item) => item.name.toLowerCase().includes(valueSearch.toLowerCase())));
 	}, [valueSearch, props.arrayForSort]);
 
 	const onSearch = useCallback(() => {
-		setArray(props.arrayForSort.filter((item) => item.name.includes(valueSearch)));
+		setArray(props.arrayForSort.filter((item) => item.name.toLowerCase().includes(valueSearch.toLowerCase())));
 	}, [props.arrayForSort, valueSearch]);
 
 	const onChangeCheckBox = useCallback(
