@@ -17,6 +17,8 @@ import {confirmation} from '../../ui-kit/Confirmation/confirmation';
 import {MinusOutlined, PlusOutlined} from '@ant-design/icons';
 import {Helmet} from 'react-helmet';
 import {cartDto} from '../../api/dto/cart.dto';
+import * as Api from '../../api';
+import {ProductDTO} from '../../api/dto/product.dto';
 
 const defaultPagination: TablePaginationConfig & {
 	skip: number;
@@ -30,6 +32,7 @@ const defaultPagination: TablePaginationConfig & {
 
 export const CartPage = () => {
 	const cart = useAppSelector((state) => state.cart);
+	const user = useAppSelector((state) => state.user);
 	const dispatch = useAppDispatch();
 	const [selectedItems, setSelectedItems] = useState<cartDto[] | undefined>(cart);
 	const {pagination, tableProps: paginationTableProps} = usePagination(cart?.length || 0, defaultPagination);
@@ -37,6 +40,31 @@ export const CartPage = () => {
 	if (cart === undefined) {
 		return <h1>Корзина пуста</h1>;
 	}
+
+	const handlePlusCountProduct = (value: number, product: ProductDTO) => {
+		if (user?.email !== '') {
+			Api.cart.updateProductInCart({
+				id_product: product,
+				count_product: value + 1,
+			});
+		}
+		dispatch(plusCountProduct(product.product_id));
+	};
+
+	const handleMinusCountProduct = (value: number, product: ProductDTO) => {
+		if (user?.email !== '') {
+			Api.cart.updateProductInCart({
+				id_product: product,
+				count_product: value - 1,
+			});
+		}
+
+		dispatch(minusCountProduct(product.product_id));
+	};
+
+	const deleteProductInCart = (product: ProductDTO) => {
+		Api.cart.deleteProductInCart({id_product: product, count_product: 0});
+	};
 
 	const columns: ColumnProps<cartDto>[] = [
 		{
@@ -120,7 +148,8 @@ export const CartPage = () => {
 							)[0].count_product;
 							if (currentCount === undefined) return;
 							if (currentCount > 1) {
-								dispatch(minusCountProduct(record.id_product.product_id));
+								handleMinusCountProduct(value, record.id_product);
+								// dispatch(minusCountProduct(record.id_product.product_id));
 								setSelectedItems(
 									selectedItems?.map((item) => {
 										let count = item.count_product;
@@ -134,6 +163,7 @@ export const CartPage = () => {
 									})
 								);
 							} else {
+								deleteProductInCart(record.id_product);
 								dispatch(removeProductFromCart(record.id_product.product_id));
 								setSelectedItems(
 									selectedItems?.filter(
@@ -150,7 +180,8 @@ export const CartPage = () => {
 						size={'small'}
 						styleType={'secondary'}
 						onClick={() => {
-							dispatch(plusCountProduct(record.id_product.product_id));
+							handlePlusCountProduct(value, record.id_product);
+							// dispatch(plusCountProduct(record.id_product.product_id));
 							setSelectedItems(
 								selectedItems?.map((item) => {
 									let count = item.count_product;

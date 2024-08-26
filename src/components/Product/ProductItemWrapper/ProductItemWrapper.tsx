@@ -39,25 +39,28 @@ const ProductItemWrapper: FC = () => {
 	};
 
 	const handlePlusCountProduct = () => {
-		dispatch(plusCountProduct(product.product_id));
-
 		if (user?.email !== '') {
 			Api.cart.updateProductInCart({
 				id_product: product,
-				count_product: cart && index !== undefined ? cart[index].count_product++ : 1,
+				count_product: cart && index !== undefined ? cart[index].count_product + 1 : 1,
 			});
 		}
+		dispatch(plusCountProduct(product.product_id));
 	};
 
 	const handleMinusCountProduct = () => {
-		dispatch(minusCountProduct(product.product_id));
-
 		if (user?.email !== '') {
-			Api.cart.updateProductInCart({
-				id_product: product,
-				count_product: cart && index !== undefined ? cart[index].count_product-- : 1,
-			});
+			if (cart && index !== undefined && cart[index].count_product === 1) {
+				Api.cart.deleteProductInCart({id_product: product, count_product: 0});
+			} else {
+				Api.cart.updateProductInCart({
+					id_product: product,
+					count_product: cart && index !== undefined ? cart[index].count_product - 1 : 1,
+				});
+			}
 		}
+
+		dispatch(minusCountProduct(product.product_id));
 	};
 
 	return (
@@ -106,19 +109,11 @@ const ProductItemWrapper: FC = () => {
 						</Button>
 					) : (
 						<div className={css.cartControls}>
-							<Button
-								size={'large'}
-								styleType={'secondary'}
-								onClick={() => dispatch(minusCountProduct(product.product_id))}
-							>
+							<Button size={'large'} styleType={'secondary'} onClick={() => handleMinusCountProduct()}>
 								<MinusOutlined />
 							</Button>
 							{cart && index !== undefined ? cart[index].count_product : 0}
-							<Button
-								size={'large'}
-								styleType={'secondary'}
-								onClick={() => dispatch(plusCountProduct(product.product_id))}
-							>
+							<Button size={'large'} styleType={'secondary'} onClick={() => handlePlusCountProduct()}>
 								<PlusOutlined />
 							</Button>
 						</div>
