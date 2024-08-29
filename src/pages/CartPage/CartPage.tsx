@@ -63,7 +63,9 @@ export const CartPage = () => {
 	};
 
 	const deleteProductInCart = (product: ProductDTO) => {
-		Api.cart.deleteProductInCart({id_product: product, count_product: 0});
+		if (user?.email !== '') {
+			Api.cart.deleteProductInCart({id_product: product, count_product: 0});
+		}
 	};
 
 	const columns: ColumnProps<cartDto>[] = [

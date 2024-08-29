@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {Button, Form, Input, notification} from 'antd';
 import * as Api from '../../../api';
+import {useMutation} from 'react-query';
 
 type changePasswordFormType = {
 	password: string;
@@ -10,7 +11,7 @@ type changePasswordFormType = {
 const ChangePasswordForm: FC = () => {
 	const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-	const onSubmit = (value: changePasswordFormType) => {
+	const mutation = useMutation((value: changePasswordFormType) =>
 		Api.userApi
 			.changePasswordUser({password: value.password})
 			.then(() => {
@@ -18,8 +19,19 @@ const ChangePasswordForm: FC = () => {
 			})
 			.catch(() => {
 				notification.error({message: 'Ошибка'});
-			});
-	};
+			})
+	);
+
+	// const onSubmit = (value: changePasswordFormType) => {
+	// 	Api.userApi
+	// 		.changePasswordUser({password: value.password})
+	// 		.then(() => {
+	// 			notification.success({message: 'Успех!'});
+	// 		})
+	// 		.catch(() => {
+	// 			notification.error({message: 'Ошибка'});
+	// 		});
+	// };
 
 	return (
 		<div>
@@ -30,7 +42,7 @@ const ChangePasswordForm: FC = () => {
 				// wrapperCol={{
 				// 	span: 30,
 				// }}
-				onFinish={onSubmit}
+				onFinish={(values) => mutation.mutate(values)}
 				style={{width: '250px'}}
 			>
 				<Form.Item

@@ -4,14 +4,15 @@ import {useAppSelector} from '../../../hooks/redux';
 import dayjs from 'dayjs';
 import {updateUserForm} from '../../../api/dto/user.dto';
 import * as Api from '../../../api';
+import {useMutation} from 'react-query';
 
 const FormAccountInfo: FC = () => {
 	const userRedux = useAppSelector((state) => state.user);
 
-	const onSubmit = (data: updateUserForm) => {
+	const mutation = useMutation((value: updateUserForm) => {
 		if (userRedux) {
-			const newUser = {...userRedux, ...data};
-			Api.userApi
+			const newUser = {...userRedux, ...value};
+			return Api.userApi
 				.updateUser(newUser)
 				.then(() => {
 					notification.success({
@@ -24,7 +25,26 @@ const FormAccountInfo: FC = () => {
 					});
 				});
 		}
-	};
+		return new Promise(() => {});
+	});
+
+	// const onSubmit = (data: updateUserForm) => {
+	// 	if (userRedux) {
+	// 		const newUser = {...userRedux, ...data};
+	// 		Api.userApi
+	// 			.updateUser(newUser)
+	// 			.then(() => {
+	// 				notification.success({
+	// 					message: 'Успешно!',
+	// 				});
+	// 			})
+	// 			.catch(() => {
+	// 				notification.error({
+	// 					message: 'Ошибка!',
+	// 				});
+	// 			});
+	// 	}
+	// };
 
 	return (
 		<Form
@@ -39,7 +59,7 @@ const FormAccountInfo: FC = () => {
 				...userRedux,
 				date_birthday: dayjs(userRedux?.date_birthday),
 			}}
-			onFinish={onSubmit}
+			onFinish={(values) => mutation.mutate(values)}
 		>
 			<Form.Item label={'E-mail'} name={'email'}>
 				<Input placeholder={'E-mail'} />

@@ -14,12 +14,18 @@ import {Button} from '../../../ui-kit/Button/Button';
 import {MinusOutlined, PlusOutlined} from '@ant-design/icons';
 import FavouriteButtonInItemProduct from '../../FavouriteButtonInItemProduct/FavouriteButtonInItemProduct';
 import {Helmet} from 'react-helmet';
+import {useMutation} from 'react-query';
 
 const ProductItemWrapper: FC = () => {
 	const [product, setProduct] = useState<ProductDTO>(initialProductDTO);
 	const {id} = useParams();
+	const mutation = useMutation(() => {
+		if (id) return Api.products.getProductById(id).then(setProduct);
+		else return new Promise(() => {});
+	});
 	useEffect(() => {
-		id && Api.products.getProductById(id).then(setProduct);
+		// id && Api.products.getProductById(id).then(setProduct);
+		mutation.mutate();
 	}, [id]);
 
 	const cart = useAppSelector((state) => state.cart);

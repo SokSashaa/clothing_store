@@ -8,6 +8,7 @@ import css from './BlockItemsProductsInCategory.module.scss';
 import {PageTitle} from '../../../ui-kit/PageTitle/PageTitle';
 import {SidebarLayout} from './SidebarLayout/SidebarLayout';
 import {calculatePriceAfterDiscount} from '../../../utils/formatPrice';
+import {useMutation} from 'react-query';
 
 const BlockItemsProductInCategory: FC = () => {
 	const [initialProducts, setInitialProducts] = useState<ProductDTO[]>([]);
