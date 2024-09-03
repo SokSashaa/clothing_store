@@ -1,24 +1,28 @@
 import axios from '../utils/axios';
 import {orderDto, orderDtoOmitID} from './dto/orders.dto';
 
+export const queryKeyGetReceiveOrdersByUser = '/orders/receive';
 export const getReceiveOrdersByUser = async (): Promise<orderDto[]> => {
-	return (await axios.get('/orders/receive')).data;
+	return (await axios.get(queryKeyGetReceiveOrdersByUser)).data;
 };
 
 export const createOrder = async (data: orderDtoOmitID) => {
 	return (await axios.post('/orders', data)).data;
 };
 
+export const queryKeyGetOrderByID = (id: string) => `/orders/${id}`;
 export const getOrderByID = async (id: string): Promise<orderDto> => {
-	return (await axios.get(`/orders/${id}`)).data;
+	return (await axios.get(queryKeyGetOrderByID(id))).data;
 };
 
+export const queryKeyGetOrderByUserID = (id: string) => `/orders/user/${id}`;
 export const getOrderByUserID = async (id_user: string): Promise<orderDto[]> => {
-	return (await axios.get(`/orders/user/${id_user}`)).data;
+	return (await axios.get(queryKeyGetOrderByUserID(id_user))).data;
 };
 
+export const queryKeyGetOrderByUser = '/orders';
 export const getOrdersByUser = async (): Promise<orderDto[]> => {
-	return (await axios.get('/orders')).data;
+	return (await axios.get(queryKeyGetOrderByUser)).data;
 };
 
 export const orderUpdate = async (data: orderDto) => {
