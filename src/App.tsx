@@ -21,6 +21,7 @@ import Wrapper from './components/Wrapper/Wrapper';
 import {CartPage} from './pages/CartPage/CartPage';
 import {routesMap} from './utils/routesMap';
 import FavouritesPage from './pages/FavouritesPage/FavouritesPage';
+import HistoryOrdersPage from './pages/HistoryOrdersPage/HistoryOrdersPage';
 
 function App() {
 	const dispatch = useAppDispatch();
@@ -39,6 +40,7 @@ function App() {
 				<Route path={routesMap.cart} element={<CartPage />} />
 				<Route element={<ProtectedRoute rule={'user'} />}>
 					<Route path={routesMap.account} element={<AccountPage />} />
+					<Route path={routesMap.history} element={<HistoryOrdersPage />} />
 				</Route>
 				<Route element={<ProtectedRoute rule={'roleAdmin'} />}>
 					<Route path={routesMap.admin.page} element={<AdminPage />}>
