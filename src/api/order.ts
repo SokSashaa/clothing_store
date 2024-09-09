@@ -1,12 +1,12 @@
 import axios from '../utils/axios';
-import {orderDto, orderDtoOmitID} from './dto/orders.dto';
+import {orderDto, orderDtoForReq, orderDtoOmitID} from './dto/orders.dto';
 
 export const queryKeyGetReceiveOrdersByUser = '/orders/receive';
 export const getReceiveOrdersByUser = async (): Promise<orderDto[]> => {
 	return (await axios.get(queryKeyGetReceiveOrdersByUser)).data;
 };
 
-export const createOrder = async (data: orderDtoOmitID) => {
+export const createOrder = async (data: orderDtoForReq) => {
 	return (await axios.post('/orders', data)).data;
 };
 

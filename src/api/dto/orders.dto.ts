@@ -1,13 +1,20 @@
 import {ProductDTO} from './product.dto';
 import {userDTO} from './user.dto';
+import {Order_itemDto} from './order_item.dto';
 
 export type orderDto = {
 	id_order: string;
-	products: ProductDTO[];
+	// products: ProductDTO[];
 	status: statusOrderEnum;
 	sum_order: number;
 	client: userDTO;
 	date: Date;
+	order_item: Order_itemDto[];
+};
+
+export type orderDtoForReq = {
+	products: {product_id: ProductDTO; count: number}[];
+	sum_order: number;
 };
 
 export enum statusOrderEnum {

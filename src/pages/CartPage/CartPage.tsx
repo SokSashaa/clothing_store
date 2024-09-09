@@ -19,6 +19,7 @@ import {Helmet} from 'react-helmet';
 import {cartDto} from '../../api/dto/cart.dto';
 import * as Api from '../../api';
 import {ProductDTO} from '../../api/dto/product.dto';
+import {useMutation} from 'react-query';
 
 const defaultPagination: TablePaginationConfig & {
 	skip: number;
@@ -36,6 +37,42 @@ export const CartPage = () => {
 	const dispatch = useAppDispatch();
 	const [selectedItems, setSelectedItems] = useState<cartDto[] | undefined>(cart);
 	const {pagination, tableProps: paginationTableProps} = usePagination(cart?.length || 0, defaultPagination);
+
+	const mutate = useMutation(() => {
+		if (selectedItems) {
+			return Api.orders
+				.createOrder({
+					products: selectedItems?.map((item) => {
+						return {product_id: item.id_product, count: item.count_product};
+					}),
+					sum_order: sum(
+						selectedItems?.map(
+							(item) =>
+								item.count_product *
+								calculatePriceAfterDiscount(
+									item.id_product.product_price,
+									item.id_product.product_discount
+								)
+						)
+					),
+				})
+				.then(() => {
+					selectedItems.map((item) => {
+						dispatch(removeProductFromCart(item.id_product.product_id));
+						setSelectedItems(
+							selectedItems?.filter(
+								(fltering) => item.id_product.product_id !== fltering.id_product.product_id
+							)
+						);
+					});
+					notification.success({
+						message: 'Заказ успешно оформлен',
+					});
+				})
+				.catch((err) => console.log(err));
+		}
+		return new Promise(() => {});
+	});
 
 	if (cart === undefined) {
 		return <h1>Корзина пуста</h1>;
@@ -286,20 +323,7 @@ export const CartPage = () => {
 											)
 										)
 									)}?`,
-									onOk: () => {
-										selectedItems?.map((item) => {
-											dispatch(removeProductFromCart(item.id_product.product_id));
-											setSelectedItems(
-												selectedItems?.filter(
-													(fltering) =>
-														item.id_product.product_id !== fltering.id_product.product_id
-												)
-											);
-										});
-										notification.success({
-											message: 'Заказ успешно оформлен',
-										});
-									},
+									onOk: () => mutate.mutate(),
 									onCancel: () => {
 										notification.error({
 											message: `Не оформлен заказ`,
