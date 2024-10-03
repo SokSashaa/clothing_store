@@ -12,6 +12,8 @@ export type orderDto = {
 	order_item: Order_itemDto[];
 };
 
+export type updateOrderDto = Partial<orderDto>;
+
 export type orderDtoForReq = {
 	products: {product_id: ProductDTO; count: number}[];
 	sum_order: number;

@@ -1,5 +1,5 @@
 import axios from '../utils/axios';
-import {orderDto, orderDtoForReq, orderDtoOmitID} from './dto/orders.dto';
+import {orderDto, orderDtoForReq, orderDtoOmitID, updateOrderDto} from './dto/orders.dto';
 
 export const queryKeyGetReceiveOrdersByUser = '/orders/receive';
 export const getReceiveOrdersByUser = async (): Promise<orderDto[]> => {
@@ -25,10 +25,15 @@ export const getOrdersByUser = async (): Promise<orderDto[]> => {
 	return (await axios.get(queryKeyGetOrderByUser)).data;
 };
 
-export const orderUpdate = async (data: orderDto) => {
+export const orderUpdate = async (data: updateOrderDto) => {
 	return (await axios.put('/orders', data)).data;
 };
 
 export const removeOrder = async (id_order: string) => {
 	return await axios.delete(`/orders/${id_order}`);
+};
+
+export const queryKeyGetOrdersMyCompany = '/orders/company';
+export const getOrdersMyCompany = async (): Promise<orderDto[]> => {
+	return (await axios.get('/orders/company')).data;
 };

@@ -20,11 +20,13 @@ export const routesMap = {
 		editUser: 'editUser',
 		company: 'company',
 		editCategory: 'editCategory',
+		orders: 'orders',
 	},
 
 	myCompany: {
 		page: '/myCompany',
 		products: 'products',
+		orders: 'orders',
 	},
 
 	discounts: '/discounts',

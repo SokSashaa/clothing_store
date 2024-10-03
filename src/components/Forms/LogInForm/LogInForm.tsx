@@ -39,7 +39,7 @@ const LogInForm: FC<LogInFormProps> = ({closeModal}) => {
 			dispatch(addArrayProductsInCart(productsInCart));
 
 			navigate(0);
-		} catch (err) {
+		} catch (err: any) {
 			notification.error({
 				message: err.toString(),
 				duration: 2,

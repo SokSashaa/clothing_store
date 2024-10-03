@@ -22,6 +22,8 @@ import {CartPage} from './pages/CartPage/CartPage';
 import {routesMap} from './utils/routesMap';
 import FavouritesPage from './pages/FavouritesPage/FavouritesPage';
 import HistoryOrdersPage from './pages/HistoryOrdersPage/HistoryOrdersPage';
+import WorkWithOrders from './components/Producer/Orders/WorkWithOrders';
+import OrdersForAdmin from './components/Admin/OrdersForAdmin/OrdersForAdmin';
 
 function App() {
 	const dispatch = useAppDispatch();
@@ -46,12 +48,14 @@ function App() {
 					<Route path={routesMap.admin.page} element={<AdminPage />}>
 						<Route path={routesMap.admin.editUser} element={<AdminEditUser />} />
 						<Route path={routesMap.admin.company} element={<EditCompany />} />
-						<Route path={routesMap.admin.editCategory} element={<EditCategory />}></Route>
+						<Route path={routesMap.admin.editCategory} element={<EditCategory />} />
+						<Route path={routesMap.admin.orders} element={<OrdersForAdmin />} />
 					</Route>
 				</Route>
 				<Route element={<ProtectedRoute rule={'roleProducer'} />}>
 					<Route path={routesMap.myCompany.page} element={<ProducerPage />}>
 						<Route path={routesMap.myCompany.products} element={<ProductsProducer />} />
+						<Route path={routesMap.myCompany.orders} element={<WorkWithOrders />} />
 					</Route>
 				</Route>
 			</Routes>
